@@ -10,6 +10,7 @@ import {
   import { useState, useCallback } from "react";
   import * as THREE from "three";
   import Sun from "./Sun";
+  import { Cloud } from "./Cloud";
   
   export const Experience = () => {
     const { scene } = useThree();
@@ -24,6 +25,15 @@ import {
     const handleClick = useCallback(() => {
       alert("You clicked a Torii gate!");
     }, []);
+  
+    // Define natural cloud positions (x, y) while keeping z fixed
+    const cloudPositions = [
+      { position: [-15, 12, -40] },  // Slightly to the left and higher
+      { position: [10, 7, -40] },   // To the right, lower altitude
+      { position: [-5, 9, -40] },   // Centered, middle height
+      { position: [5, 11, -40] },   // Slightly right, higher
+      { position: [12, 10, -40] },  // Right side, middle height
+    ];
   
     return (
       <>
@@ -54,6 +64,11 @@ import {
         </mesh>
   
         <Sun />
+  
+        {/* Add multiple clouds at more natural positions */}
+        {cloudPositions.map((cloud, index) => (
+          <Cloud key={index} scale={[1, 1, 1]} position={cloud.position} />
+        ))}
   
         {/* INTERACTIVE TORII GATES */}
         <Torii
