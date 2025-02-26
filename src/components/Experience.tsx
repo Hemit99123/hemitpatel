@@ -11,6 +11,7 @@ import {
   import * as THREE from "three";
   import Sun from "./models/Sun";
   import { Cloud } from "./models/Cloud";
+import { Store } from "./models/Store";
   
   export const Experience = () => {
     const { scene } = useThree();
@@ -71,10 +72,9 @@ import {
         ))}
   
         {/* INTERACTIVE TORII GATES */}
-        <Torii
-          scale={[16, 16, 16]}
-          position={[0, 0, -22]}
-          rotation-y={1.25 * Math.PI}
+        <Store
+          scale={[1, 1, 1]}
+          position={[0, -1.5, -22]}
           onClick={handleClick}
           onPointerOver={() => setHovered(true)}
           onPointerOut={() => setHovered(false)}
