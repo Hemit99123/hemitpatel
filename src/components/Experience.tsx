@@ -1,7 +1,6 @@
 import {
   Cylinder,
   Environment,
-  MeshReflectorMaterial,
   OrbitControls,
   useCursor,
 } from "@react-three/drei";
