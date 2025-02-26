@@ -59,29 +59,20 @@ export const Experience = () => {
       ))}
 
       {/* INTERACTIVE ELEMENTS */}
-      {/* Moving these elements closer to the origin so they’re more in view */}
       <Torii
-        scale={[1, 1, 1]}
-        position={[0, -1.5, -17]}
-        onClick={handleClick}
-        onPointerOver={() => setHovered(true)}
-        onPointerOut={() => setHovered(false)}
+        scale={[16, 16, 16]}
+        position={[0, 2, -22]}
+        rotation-y={1.25 * Math.PI}
       />
       <Torii
         scale={[10, 10, 10]}
-        position={[-6, -1, -15]}
+        position={[-8, 0.8, -20]}
         rotation-y={1.4 * Math.PI}
-        onClick={handleClick}
-        onPointerOver={() => setHovered(true)}
-        onPointerOut={() => setHovered(false)}
       />
-      <Torii
-        scale={[10, 10, 10]}
-        position={[6, -1, -15]}
-        rotation-y={Math.PI}
-        onClick={handleClick}
-        onPointerOver={() => setHovered(true)}
-        onPointerOut={() => setHovered(false)}
+      <Torii 
+        scale={[10, 10, 10]} 
+        position={[8, 0.8, -20]} 
+        rotation-y={Math.PI} 
       />
 
       <group position-y={-1}>
