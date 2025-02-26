@@ -5,7 +5,7 @@ import { Suspense } from "react";
 
 function App() {
   return (
-    <Canvas style={{ width: "100vw", height: "100vh" }} shadows camera={{ position: [3, 3, 3], fov: 30 }}>
+    <Canvas style={{ width: "100vw", height: "100vh" }} shadows camera={{ position: [0,4,14], fov: 30 }}>
     <color attach="background" args={["#ececec"]} />
       <Suspense>
           <Physics debug>

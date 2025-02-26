@@ -7,6 +7,7 @@ import {
   import { Torii } from "./Torii";
 import { useThree } from "@react-three/fiber";
 import * as THREE from "three";
+import Sun from "./Sun";
  
   export const Experience = () => {
 
@@ -41,6 +42,8 @@ import * as THREE from "three";
             roughness={1}
           />
         </mesh>
+
+        <Sun />
   
         <Torii
           scale={[16, 16, 16]}
