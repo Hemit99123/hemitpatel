@@ -5,12 +5,12 @@ import {
     useCursor,
   } from "@react-three/drei";
   import { CylinderCollider, RigidBody } from "@react-three/rapier";
-  import { Torii } from "./Torii";
+  import { Torii } from "./models/Torii";
   import { useThree } from "@react-three/fiber";
   import { useState, useCallback } from "react";
   import * as THREE from "three";
-  import Sun from "./Sun";
-  import { Cloud } from "./Cloud";
+  import Sun from "./models/Sun";
+  import { Cloud } from "./models/Cloud";
   
   export const Experience = () => {
     const { scene } = useThree();
