@@ -6,7 +6,6 @@ import { Suspense } from "react";
 function App() {
   return (
     <Canvas style={{height: "100vh"}} shadows camera={{ position: [0,6,14], fov: 30 }}>
-      <color attach="background" args={["#ececec"]} />
       <Suspense>
           <Physics debug>
             <Experience />
