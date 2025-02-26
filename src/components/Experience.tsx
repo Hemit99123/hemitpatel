@@ -2,17 +2,28 @@ import {
     Cylinder,
     MeshReflectorMaterial,
     OrbitControls,
+    useCursor,
   } from "@react-three/drei";
   import { CylinderCollider, RigidBody } from "@react-three/rapier";
   import { Torii } from "./Torii";
-import { useThree } from "@react-three/fiber";
-import * as THREE from "three";
-import Sun from "./Sun";
- 
+  import { useThree } from "@react-three/fiber";
+  import { useState, useCallback } from "react";
+  import * as THREE from "three";
+  import Sun from "./Sun";
+  
   export const Experience = () => {
-
     const { scene } = useThree();
-    scene.background = new THREE.Color("#87CEEB")
+    scene.background = new THREE.Color("#87CEEB");
+  
+    const [hovered, setHovered] = useState(false);
+  
+    // Cursor feedback
+    useCursor(hovered);
+  
+    // Click handler
+    const handleClick = useCallback(() => {
+      alert("You clicked a Torii gate!");
+    }, []);
   
     return (
       <>
@@ -27,7 +38,6 @@ import Sun from "./Sun";
         />
   
         {/* BACKGROUND */}
-  
         <mesh position={[0, -1.5, 0]} rotation={[-Math.PI / 2, 0, 0]}>
           <planeGeometry args={[50, 50]} />
           <MeshReflectorMaterial
@@ -42,20 +52,34 @@ import Sun from "./Sun";
             roughness={1}
           />
         </mesh>
-
+  
         <Sun />
   
+        {/* INTERACTIVE TORII GATES */}
         <Torii
           scale={[16, 16, 16]}
           position={[0, 0, -22]}
           rotation-y={1.25 * Math.PI}
+          onClick={handleClick}
+          onPointerOver={() => setHovered(true)}
+          onPointerOut={() => setHovered(false)}
         />
         <Torii
           scale={[10, 10, 10]}
           position={[-8, 0, -20]}
           rotation-y={1.4 * Math.PI}
+          onClick={handleClick}
+          onPointerOver={() => setHovered(true)}
+          onPointerOut={() => setHovered(false)}
         />
-        <Torii scale={[10, 10, 10]} position={[8, 0, -20]} rotation-y={Math.PI} />
+        <Torii
+          scale={[10, 10, 10]}
+          position={[8, 0, -20]}
+          rotation-y={Math.PI}
+          onClick={handleClick}
+          onPointerOver={() => setHovered(true)}
+          onPointerOut={() => setHovered(false)}
+        />
   
         <group position-y={-1}>
           {/* STAGE */}
@@ -70,8 +94,8 @@ import Sun from "./Sun";
               <meshStandardMaterial color="white" />
             </Cylinder>
           </RigidBody>
-
         </group>
       </>
     );
   };
+  
