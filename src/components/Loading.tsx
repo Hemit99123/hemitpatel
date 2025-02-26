@@ -26,7 +26,10 @@ export default function Loading() {
     <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-br from-blue-500 to-purple-600">
       <div className="text-white text-6xl font-bold mb-8">
         <span className="inline-block transform hover:scale-110 transition-transform duration-200">H</span>
-        <span className="inline-block transform hover:scale-110 transition-transform duration-200">P</span>
+        <span className="inline-block transform hover:scale-110 transition-transform duration-200">e</span>
+        <span className="inline-block transform hover:scale-110 transition-transform duration-200">m</span>
+        <span className="inline-block transform hover:scale-110 transition-transform duration-200">i</span>
+        <span className="inline-block transform hover:scale-110 transition-transform duration-200">t</span>
       </div>
       <div className="w-64 h-2 bg-white/30 rounded-full overflow-hidden">
         <div
