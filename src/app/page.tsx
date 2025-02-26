@@ -1,6 +1,7 @@
 "use client"
 
 import Loading from "@/components/Loading";
+import MainScene from "@/components/MainScene";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
@@ -18,9 +19,7 @@ export default function Home() {
       {isLoading ?
         (<Loading />)
       : (
-          <div>
-            Hello world
-          </div>
+          <MainScene />
       )
       }
     </>
