@@ -3,39 +3,34 @@ import {
   Environment,
   OrbitControls,
   useCursor,
+  Html,
 } from "@react-three/drei";
 import { CylinderCollider, RigidBody } from "@react-three/rapier";
 import { Torii } from "./models/Torii";
 import { useThree } from "@react-three/fiber";
-import { useState, useCallback } from "react";
+import { useState, useEffect } from "react";
 import * as THREE from "three";
 import Sun from "./models/Sun";
 import { Cloud } from "./models/Cloud";
-  
+
 export const Experience = () => {
-  const { scene } = useThree();
-  scene.background = new THREE.Color("#87CEEB");
+  const { camera, scene } = useThree();
+  
+  scene.background = new THREE.Color("#87CEEB")
+  const [cameraPos, setCameraPos] = useState(camera.position.clone());
 
-  const [hovered, setHovered] = useState(false);
-  useCursor(hovered);
+  useEffect(() => {
+    const updateCameraPosition = () => {
+      setCameraPos(camera.position.clone());
+    };
 
-  const handleClick = useCallback(() => {
-    alert("You clicked a Torii gate!");
-  }, []);
-
-  // Adjusted cloud positions: brought a bit closer (z = -30)
-  const cloudPositions = [
-    { position: [-15, 12, -30] },
-    { position: [10, 7, -30] },
-    { position: [-5, 9, -30] },
-    { position: [5, 11, -30] },
-    { position: [12, 10, -30] },
-  ];
+    const interval = setInterval(updateCameraPosition, 100);
+    return () => clearInterval(interval);
+  }, [camera]);
 
   return (
     <>
       <OrbitControls />
-
       <Environment preset="sunset" />
       <ambientLight intensity={1} />
       <directionalLight
@@ -54,34 +49,17 @@ export const Experience = () => {
       <Sun />
 
       {/* CLOUDS */}
-      {cloudPositions.map((cloud, index) => (
-        <Cloud key={index} scale={[1, 1, 1]} position={cloud.position} />
+      {[[-15, 2, -30], [10, 4, -30], [-5, 3, -30], [5, 11, -30], [12, 3, -30]].map((pos, index) => (
+        <Cloud key={index} scale={[1, 1, 1]} position={pos} />
       ))}
 
       {/* INTERACTIVE ELEMENTS */}
-      <Torii
-        scale={[16, 16, 16]}
-        position={[0, 2, -22]}
-        rotation-y={1.25 * Math.PI}
-      />
-      <Torii
-        scale={[10, 10, 10]}
-        position={[-8, 0.8, -20]}
-        rotation-y={1.4 * Math.PI}
-      />
-      <Torii 
-        scale={[10, 10, 10]} 
-        position={[8, 0.8, -20]} 
-        rotation-y={Math.PI} 
-      />
+      <Torii scale={[16, 16, 16]} position={[0, 2, -22]} rotation-y={1.25 * Math.PI} />
+      <Torii scale={[10, 10, 10]} position={[-8, 0.8, -20]} rotation-y={1.4 * Math.PI} />
+      <Torii scale={[10, 10, 10]} position={[8, 0.8, -20]} rotation-y={Math.PI} />
 
       <group position-y={-1}>
-        <RigidBody
-          colliders={false}
-          type="fixed"
-          position-y={-0.5}
-          friction={2}
-        >
+        <RigidBody colliders={false} type="fixed" position-y={-0.5} friction={2}>
           <CylinderCollider args={[1 / 2, 5]} />
           <Cylinder scale={[5, 1, 5]} receiveShadow>
             <meshStandardMaterial color="white" />
