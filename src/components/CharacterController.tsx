@@ -120,7 +120,7 @@ export const CharacterController = () => {
         }
       }
 
-      if (changeRotation && characterRef.current && linvel) {
+      if (changeRotation && characterRef.current && linvel) { 
         const angle = Math.atan2(linvel.x, linvel.z);
         characterRef.current.rotation.y = angle;
       }
