@@ -17,8 +17,12 @@ export const Experience = () => {
     <>
       <Environment preset="sunset" />
       <ambientLight intensity={1} />
-      <directionalLight position={[5, 5, 5]} intensity={0.3} castShadow color={"#9e69da"} />
-
+      <directionalLight
+        position={[5, 5, 5]}
+        intensity={0.4}
+        castShadow
+        color={"#9e69da"}
+      />
       {/* BACKGROUND GROUND */}
       <mesh position={[0, -1.5, 0]} rotation={[-Math.PI / 2, 0, 0]}>
         <planeGeometry args={[50, 50]} />
@@ -27,7 +31,7 @@ export const Experience = () => {
 
       <Sun />
 
-      <Background position={[0,-1.5,-10]}/>
+      <Background position={[0,-1.5,-13]}/>
 
       {/* INTERACTIVE ELEMENTS */}
       <Torii scale={[16, 16, 16]} position={[0, 2, -22]} rotation-y={1.25 * Math.PI} />
