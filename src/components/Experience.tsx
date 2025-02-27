@@ -1,8 +1,7 @@
-import { Cylinder, Environment, OrbitControls, useCursor, Html, } from "@react-three/drei";
-import { CuboidCollider, CylinderCollider, RigidBody } from "@react-three/rapier";
+import { Environment } from "@react-three/drei";
+import { CuboidCollider, RigidBody } from "@react-three/rapier";
 import { Torii } from "./models/Torii";
 import { useThree } from "@react-three/fiber";
-import { useState, useEffect } from "react";
 import * as THREE from "three";
 import Sun from "./models/Sun";
 import { CharacterController } from "./CharacterController";
