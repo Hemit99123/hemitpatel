@@ -1,5 +1,5 @@
 import { Cylinder, Environment, OrbitControls, useCursor, Html, } from "@react-three/drei";
-import { CylinderCollider, RigidBody } from "@react-three/rapier";
+import { CuboidCollider, CylinderCollider, RigidBody } from "@react-three/rapier";
 import { Torii } from "./models/Torii";
 import { useThree } from "@react-three/fiber";
 import { useState, useEffect } from "react";
@@ -35,14 +35,23 @@ export const Experience = () => {
       <Torii scale={[10, 10, 10]} position={[8, 0.8, -20]} rotation-y={Math.PI} />
 
       {/* STAGE */}
-      <RigidBody colliders={false} type="fixed" position-y={-0.5} friction={2}>
-        <Stage scale={[0.9, 0.9, 0.9]} position={[0.5, 0, 0]} />
-        
-        {/* CharacterController stays here and will not move */}
-        <RigidBody type="fixed" position={[0, 1, 0]}>
-          <CharacterController />
-        </RigidBody>
-      </RigidBody>
+      <RigidBody 
+  colliders={false} 
+  type="fixed" 
+  position-y={-0.5} 
+  friction={2}
+>
+  <Stage scale={[0.9, 0.9, 0.9]} position={[0.5, 0, 0]} />
+  
+  {/* Use CuboidCollider instead for a solid collision surface */}
+  <CuboidCollider 
+    args={[4.5, 0.05, 4.5]} // [half-width, half-height, half-depth]
+    position={[0.5, 0.05, 0]} // Slightly raised to avoid sinking
+  />
+  
+  <CharacterController/>
+</RigidBody>
+
     </>
   );
 };
