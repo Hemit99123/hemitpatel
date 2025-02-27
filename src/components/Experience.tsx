@@ -12,24 +12,17 @@ import { useState, useEffect } from "react";
 import * as THREE from "three";
 import Sun from "./models/Sun";
 import { Cloud } from "./models/Cloud";
+import { CharacterController } from "./CharacterController";
+import { Stage } from "./Stage";
 
 export const Experience = () => {
-  const { camera, scene } = useThree();
+  const { scene } = useThree();
   
-  scene.background = new THREE.Color("#87CEEB")
-  const [cameraPos, setCameraPos] = useState(camera.position.clone());
-
-  useEffect(() => {
-    const updateCameraPosition = () => {
-      setCameraPos(camera.position.clone());
-    };
-
-    const interval = setInterval(updateCameraPosition, 100);
-    return () => clearInterval(interval);
-  }, [camera]);
+  scene.background = new THREE.Color("#87CEEB");
 
   return (
     <>
+    <OrbitControls />
       <Environment preset="sunset" />
       <ambientLight intensity={1} />
       <directionalLight
@@ -45,6 +38,8 @@ export const Experience = () => {
         <meshBasicMaterial color="#87CEEB" toneMapped={false} />
       </mesh>
 
+
+      
       <Sun />
 
       {/* CLOUDS */}
@@ -57,14 +52,23 @@ export const Experience = () => {
       <Torii scale={[10, 10, 10]} position={[-8, 0.8, -20]} rotation-y={1.4 * Math.PI} />
       <Torii scale={[10, 10, 10]} position={[8, 0.8, -20]} rotation-y={Math.PI} />
 
-      <group position-y={-1}>
-        <RigidBody colliders={false} type="fixed" position-y={-0.5} friction={2}>
-          <CylinderCollider args={[1 / 2, 5]} />
-          <Cylinder scale={[5, 1, 5]} receiveShadow>
-            <meshStandardMaterial color="white" />
-          </Cylinder>
+      {/* Removed group with rotation-y to prevent unintended rotation */}
+      
+      {/* STAGE */}
+      <RigidBody
+        colliders={false}
+        type="fixed"
+        position-y={-0.5}
+        friction={2}
+      >
+        <Stage scale={[0.8,0.8,0.8]} position={[0.5,0,0]}/>
+
+        {/* CharacterController stays here and will not move */}
+        <RigidBody type="fixed" position={[0, 1, 0]}>
+          <CharacterController />
         </RigidBody>
-      </group>
+
+      </RigidBody>
     </>
   );
 };
