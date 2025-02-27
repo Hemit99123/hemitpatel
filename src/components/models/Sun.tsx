@@ -13,7 +13,7 @@ const Sun = () => {
   });
 
   return (
-    <mesh ref={sunRef} position={[-25,-0.5,-50]}> {/* Move sun to the top-right */}
+    <mesh ref={sunRef} position={[-25,4,-50]}> {/* Move sun to the top-right */}
       <sphereGeometry args={[2, 64, 64]} />
       <meshStandardMaterial
         emissive={"#ffcc00"} // Glowing yellow

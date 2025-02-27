@@ -155,7 +155,7 @@ export const CharacterController = () => {
       >
         <CapsuleCollider args={[0.8, 0.4]} position={[0, 1.2, 0]} />
         <group ref={characterRef}>
-          <Character scale={[1.5, 1.5, 1.5]} position={[0, 1.6, 0]} />
+          <Character scale={[1.5, 1.5, 1.5]} position={[0, 2, 0]} />
         </group>
       </RigidBody>
     </group>
