@@ -5,7 +5,7 @@ import { Suspense } from "react";
 
 function App() {
   return (
-    <Canvas style={{height: "100vh"}} shadows camera={{ position: [0,15,40], fov: 25 }}>
+    <Canvas style={{height: "100vh"}} shadows camera={{ position: [0,5.5,23], fov: 28 }}>
       <Suspense>
           <Physics>
             <Experience />
