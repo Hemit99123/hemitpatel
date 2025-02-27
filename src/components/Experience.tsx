@@ -8,6 +8,7 @@ import Sun from "./models/Sun";
 import { CharacterController } from "./CharacterController";
 import { Stage } from "./Stage";
 import { Background } from "./models/Background";
+import { Naruto } from "./models/Naruto";
 
 export const Experience = () => {
   const { scene } = useThree();
@@ -36,6 +37,8 @@ export const Experience = () => {
       {/* INTERACTIVE ELEMENTS */}
       <Torii scale={[16, 16, 16]} position={[0, 2, -22]} rotation-y={1.25 * Math.PI} />
       <Torii scale={[10, 10, 10]} position={[-8, 0.8, -20]} rotation-y={1.4 * Math.PI} />
+
+      <Naruto scale={[0.2,0.2,0.2]} position={[0, 0.8, -13]}/>
       <Torii scale={[10, 10, 10]} position={[8, 0.8, -20]} rotation-y={Math.PI} />
 
       {/* STAGE */}
