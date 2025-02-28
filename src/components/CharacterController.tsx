@@ -1,4 +1,4 @@
-//@ts-nocheck
+// @ts-nocheck
 
 import { useFrame } from "@react-three/fiber";
 import { CapsuleCollider, RigidBody } from "@react-three/rapier";
@@ -17,128 +17,80 @@ export const CharacterController = () => {
   const characterRef = useRef(null);
   const [isOnFloor, setIsOnFloor] = useState(true);
 
-  // Track key states manually
-  const [keys, setKeys] = useState({
-    forward: false,
-    back: false,
-    left: false,
-    right: false,
-    jump: false
-  });
+  const [keys, setKeys] = useState({ forward: false, back: false, left: false, right: false, jump: false });
 
-  // Set up key listeners
   useEffect(() => {
-    const handleKeyDown = (e) => {
-      if (e.code === 'KeyW' || e.code === 'ArrowUp') {
-        setKeys(prev => ({ ...prev, forward: true }));
-      } else if (e.code === 'KeyS' || e.code === 'ArrowDown') {
-        setKeys(prev => ({ ...prev, back: true }));
-      } else if (e.code === 'KeyA' || e.code === 'ArrowLeft') {
-        setKeys(prev => ({ ...prev, left: true }));
-      } else if (e.code === 'KeyD' || e.code === 'ArrowRight') {
-        setKeys(prev => ({ ...prev, right: true }));
-      } else if (e.code === 'Space') {
-        setKeys(prev => ({ ...prev, jump: true }));
-      }
+    const handleKeyDown = (e: { code: any; }) => {
+      setKeys((prev) => ({ ...prev, [getKey(e.code)]: true }));
+    };
+    const handleKeyUp = (e: { code: any; }) => {
+      setKeys((prev) => ({ ...prev, [getKey(e.code)]: false }));
     };
 
-    const handleKeyUp = (e) => {
-      if (e.code === 'KeyW' || e.code === 'ArrowUp') {
-        setKeys(prev => ({ ...prev, forward: false }));
-      } else if (e.code === 'KeyS' || e.code === 'ArrowDown') {
-        setKeys(prev => ({ ...prev, back: false }));
-      } else if (e.code === 'KeyA' || e.code === 'ArrowLeft') {
-        setKeys(prev => ({ ...prev, left: false }));
-      } else if (e.code === 'KeyD' || e.code === 'ArrowRight') {
-        setKeys(prev => ({ ...prev, right: false }));
-      } else if (e.code === 'Space') {
-        setKeys(prev => ({ ...prev, jump: false }));
-      }
-    };
-
-    window.addEventListener('keydown', handleKeyDown);
-    window.addEventListener('keyup', handleKeyUp);
+    window.addEventListener("keydown", handleKeyDown);
+    window.addEventListener("keyup", handleKeyUp);
     
     return () => {
-      window.removeEventListener('keydown', handleKeyDown);
-      window.removeEventListener('keyup', handleKeyUp);
+      window.removeEventListener("keydown", handleKeyDown);
+      window.removeEventListener("keyup", handleKeyUp);
     };
   }, []);
 
-  useFrame(() => {
+  useFrame(({ camera }, delta) => {
     if (!rigidBodyRef.current) return;
 
-    try {
-      const rigidbody = rigidBodyRef.current;
-      const impulse = { x: 0, y: 0, z: 0 };
+    const rigidbody = rigidBodyRef.current;
+    const impulse = { x: 0, y: 0, z: 0 };
 
-      // Handle jump
-      if (keys.jump && isOnFloor) {
-        impulse.y += JUMP_FORCE;
-        setIsOnFloor(false);
-      }
+    if (keys.jump && isOnFloor) {
+      impulse.y += JUMP_FORCE;
+      setIsOnFloor(false);
+    }
 
-      // Get current velocity safely
-      let currentVel = { x: 0, z: 0 };
-      let linvel = null;
-      try {
-        if (typeof rigidbody.linvel === 'function') {
-          linvel = rigidbody.linvel();
-          if (linvel && typeof linvel.x === 'number' && typeof linvel.z === 'number') {
-            currentVel.x = linvel.x;
-            currentVel.z = linvel.z;
-          }
-        }
-      } catch (e) {
-        console.warn("Error getting linear velocity:", e);
-        return;
-      }
+    let currentVel = { x: 0, z: 0 };
+    const linvel = rigidbody.linvel();
+    if (linvel) {
+      currentVel.x = linvel.x;
+      currentVel.z = linvel.z;
+    }
 
-      let changeRotation = false;
-      if (keys.right && currentVel.x < MAX_VEL) {
-        impulse.x += MOVEMENT_SPEED;
-        changeRotation = true;
-      }
-      if (keys.left && currentVel.x > -MAX_VEL) {
-        impulse.x -= MOVEMENT_SPEED;
-        changeRotation = true;
-      }
-      if (keys.back && currentVel.z < MAX_VEL) {
-        impulse.z += MOVEMENT_SPEED;
-        changeRotation = true;
-      }
-      if (keys.forward && currentVel.z > -MAX_VEL) {
-        impulse.z -= MOVEMENT_SPEED;
-        changeRotation = true;
-      }
+    let changeRotation = false;
+    if (keys.right && currentVel.x < MAX_VEL) {
+      impulse.x += MOVEMENT_SPEED;
+      changeRotation = true;
+    }
+    if (keys.left && currentVel.x > -MAX_VEL) {
+      impulse.x -= MOVEMENT_SPEED;
+      changeRotation = true;
+    }
+    if (keys.back && currentVel.z < MAX_VEL) {
+      impulse.z += MOVEMENT_SPEED;
+      changeRotation = true;
+    }
+    if (keys.forward && currentVel.z > -MAX_VEL) {
+      impulse.z -= MOVEMENT_SPEED;
+      changeRotation = true;
+    }
 
-      if (impulse.x !== 0 || impulse.y !== 0 || impulse.z !== 0) {
-        try {
-          rigidbody.applyImpulse(impulse, true);
-        } catch (e) {
-          console.warn("Error applying impulse:", e);
-        }
-      }
+    rigidbody.applyImpulse(impulse, true);
 
-      if (changeRotation && characterRef.current && linvel) { 
-        const angle = Math.atan2(linvel.x, linvel.z);
-        characterRef.current.rotation.y = angle;
-      }
+    if (changeRotation && characterRef.current) {
+      const angle = Math.atan2(linvel.x, linvel.z);
+      characterRef.current.rotation.y = angle;
+    }
 
-      // Use the store's getter to access and update state without a subscription
-      const { characterState, setCharacterState } = useCharacterStore.getState();
+    const { characterState, setCharacterState } = useCharacterStore.getState();
+    if (Math.abs(linvel.x) > RUN_VEL || Math.abs(linvel.z) > RUN_VEL) {
+      if (characterState !== "Run") setCharacterState("Run");
+    } else {
+      if (characterState !== "Idle") setCharacterState("Idle");
+    }
 
-      if (Math.abs(linvel.x) > RUN_VEL || Math.abs(linvel.z) > RUN_VEL) {
-        if (characterState !== "Run") {
-          setCharacterState("Run");
-        }
-      } else {
-        if (characterState !== "Idle") {
-          setCharacterState("Idle");
-        }
-      }
-    } catch (e) {
-      console.error("Error in character controller frame update:", e);
+    const characterWorldPosition = characterRef.current?.getWorldPosition(new THREE.Vector3());
+    if (characterWorldPosition) {
+      const targetCameraPosition = new THREE.Vector3(characterWorldPosition.x, 6, characterWorldPosition.z + 14);
+      camera.position.lerp(targetCameraPosition, delta * 2);
+      camera.lookAt(characterWorldPosition);
     }
   });
 
@@ -160,4 +112,15 @@ export const CharacterController = () => {
       </RigidBody>
     </group>
   );
+};
+
+const getKey = (code: any) => {
+  switch (code) {
+    case "KeyW": case "ArrowUp": return "forward";
+    case "KeyS": case "ArrowDown": return "back";
+    case "KeyA": case "ArrowLeft": return "left";
+    case "KeyD": case "ArrowRight": return "right";
+    case "Space": return "jump";
+    default: return null;
+  }
 };
