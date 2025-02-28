@@ -48,7 +48,7 @@ export const Experience = () => {
   position-y={-0.7} 
   friction={2.4}
 >
-  <Stage scale={[1.5, 1.2, 1.2]} position={[0.5, 0, 0]} />
+  <Stage scale={[1.35, 1.2, 1.2]} position={[0.5, 0, 0]} />
   <Portal position={[3.5,1.2,-3.5]} text="yo"/>
   <Portal position={[-2.5,1.2,-3.5]} text="bro"/>
   <Portal position={[3.5,1.2,3.5]} text="icl"/>
