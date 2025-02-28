@@ -5,13 +5,15 @@ import { Suspense } from "react";
 
 function App() {
   return (
-    <Canvas style={{height: "100vh"}} shadows camera={{ position: [0,5.5,23], fov: 28 }}>
-      <Suspense>
+    <div style={{ display: "flex", justifyContent: "center", alignItems: "center", height: "100vh", width: "100vw" }}>
+      <Canvas shadows camera={{ position:[ 0,3, 22], fov: 28 }}>
+        <Suspense>
           <Physics>
             <Experience />
           </Physics>
         </Suspense>
-    </Canvas>
+      </Canvas>
+    </div>
   );
 }
 
