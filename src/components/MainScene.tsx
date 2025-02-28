@@ -6,7 +6,7 @@ import { Suspense } from "react";
 function App() {
   return (
     <div style={{ display: "flex", justifyContent: "center", alignItems: "center", height: "100vh", width: "100vw" }}>
-      <Canvas shadows camera={{ position:[ 0,3, 22], fov: 28 }}>
+      <Canvas shadows camera={{ position:[ 0.5,5, 22], fov: 28 }}>
         <Suspense>
           <Physics>
             <Experience />
