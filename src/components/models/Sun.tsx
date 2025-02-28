@@ -17,11 +17,10 @@ const Sun = () => {
       <sphereGeometry args={[2, 64, 64]} />
       <meshStandardMaterial
         emissive={"#ffcc00"} // Glowing yellow
-        emissiveIntensity={5}
+        emissiveIntensity={2}
         color={"#ffaa00"}
         roughness={0.4}
       />
-      <pointLight color={"#ffcc00"} intensity={4} distance={20} />
     </mesh>
   );
 };
