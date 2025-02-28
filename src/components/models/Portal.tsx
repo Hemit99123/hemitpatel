@@ -18,8 +18,8 @@ export const Portal: FC<PortalProps> = ({position, text}) => {
     transmission: { value: 1, min: 0, max: 1 },
     roughness: { value: 0.0, min: 0, max: 1, step: 0.01 },
     thickness: { value: 0, min: 0, max: 10, step: 0.01 },
-    ior: { value: 1.5, min: 1, max: 5, step: 0.01 },
-    chromaticAberration: { value: 0, min: 0, max: 1 },
+    ior: { value: 1.17, min: 1, max: 5, step: 0.01 },
+    chromaticAberration: { value: 1, min: 0, max: 1 },
     anisotropy: { value: 0, min: 0, max: 1, step: 0.01 },
     distortion: { value: 0.0, min: 0, max: 1, step: 0.01 },
     distortionScale: { value: 0, min: 0.01, max: 1, step: 0.01 },
@@ -52,7 +52,7 @@ export const Portal: FC<PortalProps> = ({position, text}) => {
         <Center position-y={0.8}>
           <Text3D size={0.5} rotation-y={Math.PI * 2} font={"./fonts/Poppins-Black.json"}>
             {text}
-            <meshStandardMaterial color="#ebbe89" toneMapped={false} />
+            <meshStandardMaterial color="#F4BB44" toneMapped={false} />
           </Text3D>
         </Center>
       </group>
