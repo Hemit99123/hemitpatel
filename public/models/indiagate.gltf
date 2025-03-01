@@ -1,0 +1,389 @@
+{
+  "accessors": [
+    {
+      "bufferView": 0,
+      "componentType": 5126,
+      "count": 15325,
+      "type": "VEC3",
+      "max": [
+        6.6999993324279785,
+        18.09010124206543,
+        4.350001335144043
+      ],
+      "min": [
+        -6.6999993324279785,
+        0.0,
+        -4.350001335144043
+      ]
+    },
+    {
+      "bufferView": 1,
+      "componentType": 5126,
+      "count": 15325,
+      "type": "VEC3",
+      "max": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "min": [
+        -1.0,
+        -1.0,
+        -1.0
+      ]
+    },
+    {
+      "bufferView": 2,
+      "componentType": 5126,
+      "count": 15325,
+      "type": "VEC4",
+      "max": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "min": [
+        -1.0,
+        -1.0,
+        -1.0,
+        -1.0
+      ]
+    },
+    {
+      "bufferView": 3,
+      "componentType": 5126,
+      "count": 15325,
+      "type": "VEC2",
+      "max": [
+        1.0,
+        1.0
+      ],
+      "min": [
+        -1.862645149230957E-07,
+        0.0
+      ]
+    },
+    {
+      "bufferView": 4,
+      "componentType": 5125,
+      "count": 672,
+      "type": "SCALAR",
+      "max": [
+        417.0
+      ],
+      "min": [
+        0.0
+      ]
+    },
+    {
+      "bufferView": 5,
+      "componentType": 5125,
+      "count": 26832,
+      "type": "SCALAR",
+      "max": [
+        15324.0
+      ],
+      "min": [
+        418.0
+      ]
+    },
+    {
+      "bufferView": 6,
+      "componentType": 5126,
+      "count": 121,
+      "type": "VEC3",
+      "max": [
+        5.0,
+        1.1102230246251565E-16,
+        5.0
+      ],
+      "min": [
+        -5.0,
+        -1.1102230246251565E-16,
+        -5.0
+      ]
+    },
+    {
+      "bufferView": 7,
+      "componentType": 5126,
+      "count": 121,
+      "type": "VEC3",
+      "max": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "min": [
+        0.0,
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "bufferView": 8,
+      "componentType": 5126,
+      "count": 121,
+      "type": "VEC4",
+      "max": [
+        -1.0,
+        0.0,
+        0.0,
+        -1.0
+      ],
+      "min": [
+        -1.0,
+        0.0,
+        0.0,
+        -1.0
+      ]
+    },
+    {
+      "bufferView": 9,
+      "componentType": 5126,
+      "count": 121,
+      "type": "VEC2",
+      "max": [
+        1.0,
+        1.0
+      ],
+      "min": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "bufferView": 10,
+      "componentType": 5125,
+      "count": 600,
+      "type": "SCALAR",
+      "max": [
+        120.0
+      ],
+      "min": [
+        0.0
+      ]
+    }
+  ],
+  "asset": {
+    "generator": "UnityGLTF (2021.3.11f1)",
+    "version": "2.0"
+  },
+  "buffers": [
+    {
+      "uri": "Unity2Skfb.bin",
+      "byteLength": 853824
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 183900
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 183900,
+      "byteLength": 183900
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 367800,
+      "byteLength": 245200
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 613000,
+      "byteLength": 122600
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 735600,
+      "byteLength": 2688
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 738288,
+      "byteLength": 107328
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 845616,
+      "byteLength": 1452
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 847068,
+      "byteLength": 1452
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 848520,
+      "byteLength": 1936
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 850456,
+      "byteLength": 968
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 851424,
+      "byteLength": 2400
+    }
+  ],
+  "materials": [
+    {
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.4528302,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "metallicFactor": 0.0,
+        "roughnessFactor": 0.65099999308586121
+      },
+      "name": "Material 2"
+    },
+    {
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.7924528,
+          0.6563902,
+          0.384264857,
+          1.0
+        ],
+        "metallicFactor": 0.0,
+        "roughnessFactor": 0.66200000047683716
+      },
+      "name": "Material 1"
+    },
+    {
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.4433962,
+          0.4433962,
+          0.4433962,
+          1.0
+        ],
+        "metallicFactor": 0.0,
+        "roughnessFactor": 0.65099999308586121
+      },
+      "name": "Ground"
+    }
+  ],
+  "meshes": [
+    {
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1,
+            "TANGENT": 2,
+            "TEXCOORD_0": 3
+          },
+          "indices": 4,
+          "material": 0
+        },
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1,
+            "TANGENT": 2,
+            "TEXCOORD_0": 3
+          },
+          "indices": 5,
+          "material": 1
+        }
+      ],
+      "name": "India Gate"
+    },
+    {
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 6,
+            "NORMAL": 7,
+            "TANGENT": 8,
+            "TEXCOORD_0": 9
+          },
+          "indices": 10,
+          "material": 2
+        }
+      ],
+      "name": "Plane"
+    }
+  ],
+  "nodes": [
+    {
+      "rotation": [
+        0.0,
+        0.0,
+        0.0,
+        -1.0
+      ],
+      "translation": [
+        0.0,
+        1.0,
+        10.0
+      ],
+      "name": "Main Camera"
+    },
+    {
+      "rotation": [
+        0.408217877,
+        -0.234569684,
+        -0.109381631,
+        -0.8754261
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        0.99999994
+      ],
+      "translation": [
+        0.0,
+        3.0,
+        0.0
+      ],
+      "name": "Directional Light"
+    },
+    {
+      "mesh": 0,
+      "rotation": [
+        0.0,
+        0.0,
+        0.0,
+        -1.0
+      ],
+      "name": "India Gate"
+    },
+    {
+      "mesh": 1,
+      "rotation": [
+        0.0,
+        0.0,
+        0.0,
+        -1.0
+      ],
+      "scale": [
+        10.0,
+        1.0,
+        10.0
+      ],
+      "name": "Plane"
+    }
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "nodes": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "name": "Unity2Skfb"
+    }
+  ]
+}

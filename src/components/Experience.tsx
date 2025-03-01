@@ -9,6 +9,9 @@ import { Stage } from "./Stage";
 import { Background } from "./models/Background";
 import { Naruto } from "./models/Naruto";
 import {Portal}  from "./models/Portal";
+import { IndiaGate } from "./models/IndiaGate";
+import { FlagIndia } from "./models/FlagIndia";
+import { Diya } from "./models/Diya";
 
 export const Experience = () => {
   const { scene } = useThree();
@@ -42,6 +45,11 @@ export const Experience = () => {
       <Naruto scale={[0.3,0.3,0.3]} position={[0, 1.2, -15]}/>
       <Torii scale={[13, 13, 13]} position={[11, 1.2, -24]} rotation-y={Math.PI} />
 
+      {/* INDIA CULTURE */}
+      <IndiaGate scale={[0.2,0.2,0.2]} position={[-9,0,-2]} rotation-y={1.25 * Math.PI} />
+      <FlagIndia scale={[3,3,3]} position={[-15,-3,-15]}/>
+      <Diya scale={[0.15,0.15,0.15]} position={[-10, 0, 0]}/>
+
       {/* STAGE */}
       <RigidBody 
   colliders={false} 
@@ -59,7 +67,7 @@ export const Experience = () => {
   {/* Use CuboidCollider instead for a solid collision surface */}
   <CuboidCollider 
     args={[6, 0.06, 6]} // [half-width, half-height, half-depth]
-    position={[0.5, 0.07, 0]} // Slightly raised to avoid sinking
+    position={[0.5, 0.07, 0]} // Slightly raised to avoid sinkingwas
   />
   
   <CharacterController/>
