@@ -15,6 +15,8 @@ import { Diya } from "./models/Diya";
 import { Gada } from "./models/Gada";
 import { Maple } from "./models/Maple";
 import { Avro } from "./models/Avro";
+import { TotemPole } from "./models/TotemPole";
+import { CNTower } from "./models/CNTower";
 
 export const Experience = () => {
   const { scene } = useThree();
@@ -76,7 +78,9 @@ export const Experience = () => {
   
     {/* CANADIAN CULTURE */}
     <Maple scale={[0.15,0.15,0.15]} position={[12,1,-11]} rotation-y={-1.25 * Math.PI}  />
-    <Avro scale={[0.20,0.20, 0.20]} position={[12,0,-6]} rotation-y={-1.80 * Math.PI}/>
+    <Avro scale={[0.25,0.25, 0.25]} position={[12,0,-6]} rotation-y={-1.80 * Math.PI}/>
+    <TotemPole scale={[15,15,15]} position={[14,-15.5,-5]} rotation-y={-1.80 * Math.PI}/>
+    <CNTower scale={[0.35,0.35,0.35]} position={[20,0,-15]} />
   <CharacterController/>
 </RigidBody>
 
