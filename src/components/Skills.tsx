@@ -61,15 +61,12 @@ export const Experience3 = () => {
   }
 
   const gridItems = [
-    { id: 1, position: [-4, 4, 0], size: { width: 3, height: 3 }, imageUrl: "https://plus.unsplash.com/premium_photo-1672837630994-5c0a5f890fd8?q=80&w=2355&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", skill: "D", description: "d" },
-    { id: 2, position: [0, 4, 0], size: { width: 3, height: 3 }, imageUrl: "https://images.unsplash.com/photo-1539627831859-a911cf04d3cd?q=80&w=2942&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", skill: "D", description: "d" },
-    { id: 3, position: [4, 4, 0], size: { width: 2, height: 2 }, imageUrl: "https://images.unsplash.com/photo-1517971071642-34a2d3ecc9cd?q=80&w=2403&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", skill: "D", description: "d" },
-    { id: 4, position: [-4, 0, 0], size: { width: 2, height: 2 }, imageUrl: "https://source.unsplash.com/400x400/?forest", skill: "D", description: "d" },
-    { id: 5, position: [0, 0, 0], size: { width: 2, height: 2 }, imageUrl: "https://source.unsplash.com/400x400/?mountain", skill: "D", description: "d" },
-    { id: 6, position: [4, 0, 0], size: { width: 2, height: 2 }, imageUrl: "https://source.unsplash.com/400x400/?desert", skill: "D", description: "d" },
-    { id: 7, position: [-4, -4, 0], size: { width: 2, height: 2 }, imageUrl: "https://source.unsplash.com/400x400/?space", skill: "D", description: "d" },
-    { id: 8, position: [0, -4, 0], size: { width: 2, height: 2 }, imageUrl: "https://source.unsplash.com/400x400/?abstract", skill: "D", description: "d" },
-    { id: 9, position: [4, -4, 0], size: { width: 2, height: 2 }, imageUrl: "https://source.unsplash.com/400x400/?abstract", skill: "D", description: "d" }
+    { id: 1, position: [-4, 4, 0], imageUrl: "https://plus.unsplash.com/premium_photo-1672837630994-5c0a5f890fd8?q=80&w=2355&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", skill: "Communication", description: "d" },
+    { id: 2, position: [0, 4, 0], imageUrl: "https://images.unsplash.com/photo-1539627831859-a911cf04d3cd?q=80&w=2942&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", skill: "Problem solving", description: "d" },
+    { id: 3, position: [4, 4, 0], imageUrl: "https://images.unsplash.com/photo-1517971071642-34a2d3ecc9cd?q=80&w=2403&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", skill: "Writing", description: "d" },
+    { id: 4, position: [-4, 0, 0], imageUrl: "https://images.unsplash.com/photo-1600880292089-90a7e086ee0c?q=80&w=3087&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", skill: "Leadership", description: "d" },
+    { id: 5, position: [0, 0, 0], imageUrl: "https://images.unsplash.com/photo-1620424393934-04e772be09f4?q=80&w=3087&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", skill: "Critical thinking", description: "d" },
+    { id: 6, position: [4, 0, 0], imageUrl: "https://images.unsplash.com/photo-1509048191080-d2984bad6ae5?q=80&w=3163&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", skill: "Time Management", description: "d" },
   ];
 
   return (
@@ -81,12 +78,15 @@ export const Experience3 = () => {
         <meshStandardMaterial color="#333333" metalness={0.8} roughness={0.2} />
       </Text3D>
       {selected ? (
-  <Html position={[2, 0, 0]} style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%, -50%)" }}>
+  <Html position={[0, 0, 0]}>
+   <div className="w-screen">
    <h1 className="text-2xl font-bold">{selected.skill}</h1>
    <div className="max-w-xl">
     <p className="">{selected.description}</p>
    </div>
    <button onClick={handleReset} className="bg-black rounded-lg text-white py-2 px-5">Cancel</button>
+    </div> 
+
         
   </Html>
 ) : (
