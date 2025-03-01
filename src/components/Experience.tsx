@@ -13,6 +13,8 @@ import { IndiaGate } from "./models/IndiaGate";
 import { FlagIndia } from "./models/FlagIndia";
 import { Diya } from "./models/Diya";
 import { Gada } from "./models/Gada";
+import { Maple } from "./models/Maple";
+import { Avro } from "./models/Avro";
 
 export const Experience = () => {
   const { scene } = useThree();
@@ -72,6 +74,9 @@ export const Experience = () => {
     position={[0.5, 0.07, 0]} // Slightly raised to avoid sinkingwas
   />
   
+    {/* CANADIAN CULTURE */}
+    <Maple scale={[0.15,0.15,0.15]} position={[12,1,-11]} rotation-y={-1.25 * Math.PI}  />
+    <Avro scale={[0.20,0.20, 0.20]} position={[12,0,-6]} rotation-y={-1.80 * Math.PI}/>
   <CharacterController/>
 </RigidBody>
 
