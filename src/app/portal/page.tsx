@@ -1,19 +1,9 @@
-"use client";
+import React from 'react'
 
-import { motion } from "framer-motion";
-import React from "react";
-
-const Page = () => {
+const page = () => {
   return (
-    <motion.div
-      initial={{ opacity: 0, scale: 0.9 }}
-      animate={{ opacity: 1, scale: 1 }}
-      transition={{ duration: 0.6, ease: "easeOut" }}
-      className="min-h-screen bg-[#e3daf7]"
-    >
-        <h1 className="text-3xl font-bold">Welcome to the Portal</h1>
-    </motion.div>
-  );
-};
+    <div>page</div>
+  )
+}
 
-export default Page;
+export default page
