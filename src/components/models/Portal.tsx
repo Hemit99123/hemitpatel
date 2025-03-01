@@ -1,4 +1,4 @@
-import { useViewTypeStore } from "@/store/view";
+import { useViewTypeStore, ViewType } from "@/store/view";
 import { Center, Cylinder, Sphere, Text3D } from "@react-three/drei";
 import { CylinderCollider, RigidBody } from "@react-three/rapier";
 import { useControls } from "leva";
@@ -9,9 +9,10 @@ interface PortalProps {
   text: string;
   text_x: number;
   text_y: 0.8 | 1;
+  view: ViewType;
 }
 
-export const Portal: FC<PortalProps> = ({ position, text, text_x, text_y }) => {
+export const Portal: FC<PortalProps> = ({ position, text, text_x, text_y, view }) => {
 
   const {setType} = useViewTypeStore.getState()
 
@@ -45,7 +46,7 @@ export const Portal: FC<PortalProps> = ({ position, text, text_x, text_y }) => {
           colliders={false}
           type="fixed"
           onCollisionEnter={() => {
-            setType("personality")
+            setType(view)
           }}
         >
           <CylinderCollider args={[0.25 / 2, 1]} />

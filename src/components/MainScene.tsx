@@ -5,6 +5,7 @@ import { Experience as Experience2 } from "./ScrollView";
 import { Physics } from "@react-three/rapier";
 import { Suspense } from "react";
 import { useViewTypeStore } from "@/store/view";
+import { Experience3 } from "./Skills";
 
 // This component handles the content switching without remounting Canvas
 const SceneSwitcher = () => {
@@ -13,7 +14,7 @@ const SceneSwitcher = () => {
   return (
     <Suspense fallback={null}>
       <Physics>
-        {type === "world" ? <Experience /> : type === "personality" ? <Experience2 /> : null}
+        {type === "world" ? <Experience /> : type === "personality" ? <Experience2 /> : type === "skills" ? <Experience3 /> : null}
       </Physics>
     </Suspense>
   );

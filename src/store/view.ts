@@ -1,13 +1,15 @@
 import { create } from "zustand";
 
+export type ViewType = "world" | "personality" | "skills"
+
 interface CharacterState {
-  type: "world" | "personality";
-  setType: (type: "world" | "personality") => void;  // Fixed typo here
+  type: ViewType;
+  setType: (type: ViewType) => void;  // Fixed typo here
 }
 
 export const useViewTypeStore = create<CharacterState>((set) => ({
   type: "world",
-  setType: (type: "world" | "personality") =>
+  setType: (type: ViewType) =>
     set({
       type,
     }),
