@@ -1,6 +1,7 @@
 import { Center, Cylinder, Sphere, Text3D } from "@react-three/drei";
 import { CylinderCollider, RigidBody } from "@react-three/rapier";
 import { useControls } from "leva";
+import { useRouter } from "next/navigation";
 import { FC } from "react";
 
 interface PortalProps {
@@ -32,6 +33,8 @@ export const Portal: FC<PortalProps> = ({ position, text, text_x, text_y }) => {
     color: "#fffff",
     bg: "#ffffff",
   });
+  
+  const router = useRouter()
 
   return (
     <group rotation-y={Math.PI * 2}>
@@ -40,7 +43,7 @@ export const Portal: FC<PortalProps> = ({ position, text, text_x, text_y }) => {
           colliders={false}
           type="fixed"
           onCollisionEnter={() => {
-            alert("touched!");
+            router.push("/portal")
           }}
         >
           <CylinderCollider args={[0.25 / 2, 1]} />
