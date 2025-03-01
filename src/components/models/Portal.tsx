@@ -2,7 +2,6 @@ import { useViewTypeStore } from "@/store/view";
 import { Center, Cylinder, Sphere, Text3D } from "@react-three/drei";
 import { CylinderCollider, RigidBody } from "@react-three/rapier";
 import { useControls } from "leva";
-import { useRouter } from "next/navigation";
 import { FC } from "react";
 
 interface PortalProps {
@@ -15,7 +14,7 @@ interface PortalProps {
 export const Portal: FC<PortalProps> = ({ position, text, text_x, text_y }) => {
 
   const {setType} = useViewTypeStore.getState()
-  
+
   const config = useControls({
     meshPhysicalMaterial: false,
     transmissionSampler: false,
@@ -38,7 +37,6 @@ export const Portal: FC<PortalProps> = ({ position, text, text_x, text_y }) => {
     bg: "#ffffff",
   });
   
-  const router = useRouter()
 
   return (
     <group rotation-y={Math.PI * 2}>
