@@ -23,7 +23,7 @@ export default function Loading() {
   }, [])
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-br from-blue-500 to-purple-600">
+    <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-br from-pink-200 to-purple-300">
       <div className="text-white text-6xl font-bold mb-8 hover:cursor-pointer">
         <span className="inline-block transform hover:scale-110 transition-transform duration-200">H</span>
         <span className="inline-block transform hover:scale-110 transition-transform duration-200">e</span>
