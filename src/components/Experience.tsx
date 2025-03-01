@@ -229,7 +229,6 @@ export const Experience = () => {
         
         <InteractiveModel 
           position={[12, 0, -6]} 
-          rotation-y={-1.80 * Math.PI}
           scale={[0.25, 0.25, 0.25]}
           modelName="Avro Arrow"
           description={modelDescriptions.avro}
