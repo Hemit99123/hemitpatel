@@ -1,6 +1,6 @@
 import { create } from "zustand";
 
-export type ViewType = "world" | "personality" | "skills"
+export type ViewType = "world" | "persoanlity" | "coping" | "skills"
 
 interface CharacterState {
   type: ViewType;
