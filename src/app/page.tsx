@@ -1,9 +1,8 @@
 "use client"
 
-import Loading from "@/components/MainScene/Loading";
-import MainScene from "@/components/MainScene/MainScene";
+import Loading from "@/components/Loading";
+import MainScene from "@/components/MainScene";
 import { Leva } from "leva";
-import Image from "next/image";
 import { useEffect, useState } from "react";
 
 export default function Home() {
