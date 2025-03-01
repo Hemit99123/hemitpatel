@@ -4,11 +4,13 @@ import { useControls } from "leva";
 import { FC } from "react";
 
 interface PortalProps {
-    position: [number, number, number]
-    text: string;
+  position: [number, number, number];
+  text: string;
+  text_x: number;
+  text_y: 0.8 | 1;
 }
 
-export const Portal: FC<PortalProps> = ({position, text}) => {
+export const Portal: FC<PortalProps> = ({ position, text, text_x, text_y }) => {
   const config = useControls({
     meshPhysicalMaterial: false,
     transmissionSampler: false,
@@ -46,15 +48,19 @@ export const Portal: FC<PortalProps> = ({position, text}) => {
             <meshStandardMaterial color="white" />
           </Cylinder>
         </RigidBody>
-        <Sphere scale={[1.22, 1.22, 1.22]} position={[0, 0.8, 0]}>
-          <meshPhysicalMaterial {...config} />
-        </Sphere>
-        <Center position-y={0.8}>
-          <Text3D size={0.5} rotation-y={Math.PI * 2} font={"./fonts/Poppins-Black.json"}>
+
+<Sphere scale={[1.22, 1.22, 1.22]} position={[0, 0.8, 0]} renderOrder={1}>
+  <meshPhysicalMaterial {...config} />
+</Sphere>
+<Center position-y={text_y} position-x={text_x}>
+        <Text3D
+            font={"./fonts/Poppins-Black.json"}
+            size={0.4}
+          >
             {text}
-            <meshStandardMaterial color="#F4BB44" toneMapped={false} />
+            <meshStandardMaterial color="#ebbe89" toneMapped={false} />
           </Text3D>
-        </Center>
+</Center>
       </group>
     </group>
   );
