@@ -3,7 +3,7 @@
 import { useFrame } from "@react-three/fiber";
 import { CapsuleCollider, RigidBody } from "@react-three/rapier";
 import { useRef, useState, useEffect } from "react";
-import Character from "./models/Character";
+import Character from "./MainScene/models/Character";
 import * as THREE from "three";
 import { useCharacterStore } from "./store/character";
 
