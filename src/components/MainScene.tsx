@@ -8,6 +8,7 @@ import { useViewTypeStore } from "@/store/view";
 import { Experience3 } from "./Skills";
 import { Personality } from "./scroll_view/Personality";
 import { Coping } from "./scroll_view/Coping";
+import MyIdentity from "./scroll_view/MyIdentity";
 
 // This component handles the content switching without remounting Canvas
 const SceneSwitcher = () => {
@@ -16,7 +17,14 @@ const SceneSwitcher = () => {
   return (
     <Suspense fallback={null}>
       <Physics>
-        {type === "world" ? <Experience /> : type === "persoanlity" ? <Experience2 overlay={Personality} /> : type === "coping" ? <Experience2 overlay={Coping} /> : type === "skills" ? <Experience3 /> : null}
+      {
+  type === "world" ? <Experience /> :
+  type === "persoanlity" ? <Experience2 overlay={Personality} /> :
+  type === "coping" ? <Experience2 overlay={Coping} /> :
+  type === "me" ? <MyIdentity /> :
+  type === "skills" ? <Experience3 /> :
+  null
+}
       </Physics>
     </Suspense>
   );
