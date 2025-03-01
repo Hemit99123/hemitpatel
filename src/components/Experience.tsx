@@ -12,6 +12,7 @@ import {Portal}  from "./models/Portal";
 import { IndiaGate } from "./models/IndiaGate";
 import { FlagIndia } from "./models/FlagIndia";
 import { Diya } from "./models/Diya";
+import { Gada } from "./models/Gada";
 
 export const Experience = () => {
   const { scene } = useThree();
@@ -48,20 +49,21 @@ export const Experience = () => {
       {/* INDIA CULTURE */}
       <IndiaGate scale={[0.2,0.2,0.2]} position={[-9,0,-2]} rotation-y={1.25 * Math.PI} />
       <FlagIndia scale={[3,3,3]} position={[-15,-3,-15]}/>
-      <Diya scale={[0.15,0.15,0.15]} position={[-10, 0, 0]}/>
+      <Diya scale={[0.3,0.3,0.3]} position={[-10, -0.2, 1]}/>
+      <Gada scale={[4,4,4]} position={[-7, 0, 2.5]} rotation-y={1.25 * Math.PI}/>
 
       {/* STAGE */}
       <RigidBody 
-  colliders={false} 
-  type="fixed" 
-  position-y={-0.7} 
-  friction={2.4}
->
-  <Stage scale={[1.35, 1.2, 1.2]} position={[0.5, 0, 0]} />
-  <Portal position={[3.5,1.2,-3.5]} text="Me" text_x={0.1} text_y={0.8}/>
-  <Portal position={[-2.5,1.2,-3.5]} text="Vibe" text_x={-0.05} text_y={0.8}/>
-  <Portal position={[3.5,1.2,3.5]} text="Skills" text_x={-0.01} text_y={1}/>
-  <Portal position={[-3,1.2,3.5]} text="Coping" text_x={0} text_y={1}/>
+        colliders={false} 
+        type="fixed" 
+        position-y={-0.7} 
+        friction={2.4}
+      >
+      <Stage scale={[1.35, 1.2, 1.2]} position={[0.5, 0, 0]} />
+      <Portal position={[3.5,1.2,-3.5]} text="Me" text_x={0.1} text_y={0.8}/>
+      <Portal position={[-2.5,1.2,-3.5]} text="Vibe" text_x={-0.05} text_y={0.8}/>
+      <Portal position={[3.5,1.2,3.5]} text="Skills" text_x={-0.01} text_y={1}/>
+      <Portal position={[-3,1.2,3.5]} text="Coping" text_x={0} text_y={1}/>
 
 
   {/* Use CuboidCollider instead for a solid collision surface */}
