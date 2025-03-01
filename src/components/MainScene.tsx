@@ -9,26 +9,32 @@ import { Experience3 } from "./Skills";
 import { Personality } from "./scroll_view/Personality";
 import { Coping } from "./scroll_view/Coping";
 import MyIdentity from "./scroll_view/MyIdentity";
+import { Html } from "@react-three/drei";
 
 // This component handles the content switching without remounting Canvas
 const SceneSwitcher = () => {
-  const { type } = useViewTypeStore();
+  const { type, setType } = useViewTypeStore(); // Assuming `setType` is a function to update the view
   
+  const goToWorld = () => {
+    setType("world"); // Change the view type back to "world"
+  };
+
   return (
     <Suspense fallback={null}>
       <Physics>
-      {
-  type === "world" ? <Experience /> :
-  type === "persoanlity" ? <Experience2 overlay={Personality} /> :
-  type === "coping" ? <Experience2 overlay={Coping} /> :
-  type === "me" ? <MyIdentity /> :
-  type === "skills" ? <Experience3 /> :
-  null
-}
+        {
+          type === "world" ? <Experience /> :
+          type === "persoanlity" ? <><Experience2 overlay={Personality} /><Html position={[7,5,0]}><button onClick={goToWorld} className="bg-black text-white rounded-full h-10 w-48">Go back</button></Html></>:
+          type === "coping" ? <><Experience2 overlay={Coping} /><Html position={[7,5,0]}><button onClick={goToWorld} className="bg-black text-white rounded-full h-10 w-48">Go back</button></Html></> :
+          type === "me" ? <><MyIdentity /><Html position={[8,5.8,0]}><button onClick={goToWorld} className="bg-black text-white rounded-full h-10 w-48">Go back</button></Html></> :
+          type === "skills" ? <><Experience3 /><Html position={[7,5,0]}><button onClick={goToWorld} className="bg-black text-white rounded-full h-10 w-48">Go back</button></Html></> :
+          null
+        }
       </Physics>
     </Suspense>
   );
 };
+
 
 const App = () => {
   // Use a ref to ensure the DOM container is stable
