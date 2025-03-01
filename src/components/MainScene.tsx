@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import { Canvas, useThree } from "@react-three/fiber";
-import { Experience } from "./Experience";
-import { Experience as Experience2 } from "./Experience2";
+import { Experience } from "./World";
+import { Experience as Experience2 } from "./ScrollView";
 import { Physics } from "@react-three/rapier";
 import { Suspense } from "react";
 import { useViewTypeStore } from "@/store/view";
