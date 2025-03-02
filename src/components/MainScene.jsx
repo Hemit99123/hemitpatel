@@ -4,7 +4,7 @@ import { Experience } from "./World";
 import { Experience as Experience2 } from "./ScrollView";
 import { Physics } from "@react-three/rapier";
 import { Suspense } from "react";
-import { useViewTypeStore } from "@/store/view";
+import { useViewTypeStore } from "../store/view";
 import { Experience3 } from "./Skills";
 import { Personality } from "./scroll_view/Personality";
 import { Coping } from "./scroll_view/Coping";

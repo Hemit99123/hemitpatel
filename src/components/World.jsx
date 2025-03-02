@@ -20,7 +20,7 @@ import { Maple } from "./models/Maple";
 import { Avro } from "./models/Avro";
 import { TotemPole } from "./models/TotemPole";
 import { CNTower } from "./models/CNTower";
-import { modelDescriptions } from "@/data/model";
+import { modelDescriptions } from "../data/model";
 
 // Component for the full-screen modal (rendered outside the canvas)
 const FullScreenModal = ({ modelName, description, onClose }) => {

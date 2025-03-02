@@ -3,7 +3,7 @@ import { CapsuleCollider, RigidBody } from "@react-three/rapier";
 import { useRef, useState, useEffect } from "react";
 import Character from "./models/Character";
 import * as THREE from "three";
-import { useCharacterStore } from "@/store/character";
+import { useCharacterStore } from "../store/character";
 
 const JUMP_FORCE = 0.5;
 const MOVEMENT_SPEED = 0.1;

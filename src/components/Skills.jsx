@@ -3,7 +3,7 @@ import { Text3D, Box, Html } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 import { useState, useRef } from "react";
 import * as THREE from "three";
-import { gridItems } from "@/data/grid";
+import { gridItems } from "../data/grid";
 
 const loadTexture = (url) => {
   const textureLoader = new THREE.TextureLoader();
