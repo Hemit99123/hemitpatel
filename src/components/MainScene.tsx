@@ -26,7 +26,7 @@ const SceneSwitcher = () => {
           type === "world" ? <Experience /> :
           type === "persoanlity" ? <><Experience2 overlay={Personality} /><Html position={[7,5,0]}><button onClick={goToWorld} className="bg-black text-white rounded-full h-10 w-48">Go back</button></Html></>:
           type === "coping" ? <><Experience2 overlay={Coping} /><Html position={[7,5,0]}><button onClick={goToWorld} className="bg-black text-white rounded-full h-10 w-48">Go back</button></Html></> :
-          type === "me" ? <><MyIdentity /><Html position={[7,4.8,0]}><button onClick={goToWorld} className="bg-black text-white rounded-full h-10 w-48">Go back</button></Html></> :
+          type === "me" ? <><MyIdentity /><Html position={[8,6,0]}><button onClick={goToWorld} className="bg-black text-white rounded-full h-10 w-48">Go back</button></Html></> :
           type === "skills" ? <><Experience3 /><Html position={[7,5,0]}><button onClick={goToWorld} className="bg-black text-white rounded-full h-10 w-48">Go back</button></Html></> :
           null
         }
