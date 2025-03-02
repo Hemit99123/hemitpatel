@@ -17,7 +17,7 @@ const AlertTip = ({ message, onClose }) => {
     <Html>
       <div className="fixed top-5 left-1/2 transform -translate-x-1/2 bg-black text-white px-6 py-3 rounded-lg shadow-lg z-50">
         {message}
-        <button onClick={onClose} className="ml-4 text-gray-300 hover:text-white">✖</button>
+        <button onClick={onClose} className="ml-4 text-red-500">✖</button>
       </div>
     </Html>
 
