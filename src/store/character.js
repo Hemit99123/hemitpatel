@@ -5,7 +5,7 @@ interface CharacterState {
   setCharacterState: (characterState: "Idle" | "Run") => void;
 }
 
-export const useCharacterStore = create<CharacterState>((set) => ({
+export const useCharacterStore = create((set) => ({
   characterState: "Idle",
   setCharacterState: (characterState) =>
     set({

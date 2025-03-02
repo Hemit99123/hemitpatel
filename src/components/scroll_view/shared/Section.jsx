@@ -1,10 +1,10 @@
 interface SectionProps {
-  right?: boolean;
-  opacity?: number;
+  right?;
+  opacity?;
   children: React.ReactNode;
 }
 
-export const Section: React.FC<SectionProps> = (props) => {
+export const Section: React.FC = (props) => {
   return (
     <section
       className={`h-screen flex flex-col p-10 ${

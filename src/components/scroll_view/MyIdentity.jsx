@@ -49,7 +49,7 @@ const topics = {
 
 function Modal({ onClose, children, image, occupationWorks }) {
   const [isDragging, setIsDragging] = useState(false);
-  const [position, setPosition] = useState({ x: 0, y: 0 });
+  const [position, setPosition] = useState({ x, y: 0 });
   const modalRef = useRef(null);
 
   const handleMouseDown = (e) => {

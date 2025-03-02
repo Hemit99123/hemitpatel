@@ -1,7 +1,7 @@
 import { useGLTF } from "@react-three/drei";
 import React from "react";
 
-export function Torii(props: any) {
+export function Torii(props) {
   const { nodes, materials } = useGLTF("./models/model.glb");
 
   return (

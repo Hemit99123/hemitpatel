@@ -38,18 +38,18 @@ export const Personality = () => {
       height={50}
       alt="hemit at cadet"
     />
-    <div>
+    
       I am a proud Cadet Flight CPL. Pictured above is my first ceremony in 2023!
     </div>
     <div className="list-disc ml-5">
       <p className="font-bold">How is this 🏛️ Conventional?:</p>
-      <li>I follow the structured system and traditions (conventional ways).</li>
-      <li>Respecting hierarchy and authority (contentional values)</li>
+      I follow the structured system and traditions (conventional ways).</li>
+      Respecting hierarchy and authority (contentional values)</li>
 
       <p className="font-bold">How is this 🚀 Enterprising?</p>
-      <li>I take initiative in challenges.</li>
-      <li>I engage in fitness testings and range team (shooting) to develop my skills.</li>
-      <li>I make calculated moves (planning)</li>
+      I take initiative in challenges.</li>
+      I engage in fitness testings and range team (shooting) to develop my skills.</li>
+      I make calculated moves (planning)</li>
     </div>
   </ul>
 
@@ -76,16 +76,16 @@ export const Personality = () => {
           height={20}
           alt="my coding work"
           />
-          <div>
-          <h1>Pictured beside is me solving a programming problem.</h1>
+          
+          Pictured beside is me solving a programming problem.</h1>
     <p className="mt-5">
-  As an <strong>ISTJ</strong> with a <span className="text-green-800">Green</span> personality, I excel in environments where <strong>rationality</strong> and <strong>logic</strong> are prioritized. <span className="underline">Coding is the perfect environment for this.</span>
+  As an ISTJ</strong> with a <span className="text-green-800">Green</span> personality, I excel in environments where rationality</strong> and logic</strong> are prioritized. <span className="underline">Coding is the perfect environment for this.</span>
 </p>
 
 <ul className="mt-10 list-disc">
-  <li><strong className="text-green-500">Logical Thinker:</strong> You need to design logic to write code.</li>
-  <li><strong className="text-green-500">Detail-Oriented:</strong> Precision and accuracy are crucial when coding.</li>
-  <li><strong className="text-green-500">Efficient Problem-Solving:</strong> Finding the best, most efficient solutions is important and require problem solving.</li>
+  <strong className="text-green-500">Logical Thinker:</strong> You need to design logic to write code.</li>
+  <strong className="text-green-500">Detail-Oriented:</strong> Precision and accuracy are crucial when coding.</li>
+  <strong className="text-green-500">Efficient Problem-Solving:</strong> Finding the best, most efficient solutions is important and require problem solving.</li>
 </ul>
 
 
@@ -103,10 +103,10 @@ export const Personality = () => {
             height={20}
             alt="my coding work"
           />
-          <div>
-          <h1>I love going to the gym.</h1>
+          
+          I love going to the gym.</h1>
     <p className="mt-5">
-  As an <strong>ISTJ</strong> with a <span className="text-green-800">Green</span> personality, we like routine, consistency, and personal growth. <span className="underline">Working out is the perfect for this as you better your personal fitness.</span>
+  As an ISTJ</strong> with a <span className="text-green-800">Green</span> personality, we like routine, consistency, and personal growth. <span className="underline">Working out is the perfect for this as you better your personal fitness.</span>
 </p>
 
 
@@ -130,8 +130,8 @@ export const Personality = () => {
             alt="my coding work"
           />
           <ul className="list-disc">
-            <li>
-              <b>Auditory 🎧</b>:
+            
+              Auditory 🎧</b>:
               <Image 
               className="rounded-lg"
               src="/images/beyondcoding.jpg"
@@ -143,7 +143,7 @@ export const Personality = () => {
             </li>
             
             <li className="mt-5">
-              <b>Visual 👀:</b>
+              Visual 👀:</b>
               <Image 
               className="rounded-lg"
               src="/images/diagram.jpg"

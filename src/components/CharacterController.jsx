@@ -17,13 +17,13 @@ export const CharacterController = () => {
   const characterRef = useRef(null);
   const [isOnFloor, setIsOnFloor] = useState(true);
 
-  const [keys, setKeys] = useState({ forward: false, back: false, left: false, right: false, jump: false });
+  const [keys, setKeys] = useState({ forward, back, left, right, jump: false });
 
   useEffect(() => {
-    const handleKeyDown = (e: { code: any; }) => {
+    const handleKeyDown = (e: { code; }) => {
       setKeys((prev) => ({ ...prev, [getKey(e.code)]: true }));
     };
-    const handleKeyUp = (e: { code: any; }) => {
+    const handleKeyUp = (e: { code; }) => {
       setKeys((prev) => ({ ...prev, [getKey(e.code)]: false }));
     };
 
@@ -40,14 +40,14 @@ export const CharacterController = () => {
     if (!rigidBodyRef.current) return;
 
     const rigidbody = rigidBodyRef.current;
-    const impulse = { x: 0, y: 0, z: 0 };
+    const impulse = { x, y, z: 0 };
 
     if (keys.jump && isOnFloor) {
       impulse.y += JUMP_FORCE;
       setIsOnFloor(false);
     }
 
-    let currentVel = { x: 0, z: 0 };
+    let currentVel = { x, z: 0 };
     const linvel = rigidbody.linvel();
     if (linvel) {
       currentVel.x = linvel.x;
@@ -95,7 +95,7 @@ export const CharacterController = () => {
   });
 
   return (
-    <group>
+    
       <RigidBody
         ref={rigidBodyRef}
         colliders={false}
@@ -114,7 +114,7 @@ export const CharacterController = () => {
   );
 };
 
-const getKey = (code: any) => {
+const getKey = (code) => {
   switch (code) {
     case "KeyW": case "ArrowUp": return "forward";
     case "KeyS": case "ArrowDown": return "back";

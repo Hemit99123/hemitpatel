@@ -23,7 +23,7 @@ export const Coping = () => {
       <div className="w-screen">
         <Section opacity={opacityFirstSection}>
           <h1 className="text-xl font-bold">Meditation</h1>
-          <p>Meditation is the best way to relax your mind. I personally practice it when I wake up. It involves detaching yourself from reflexive logical thinking. As a Green personality, that is tough as I love logical reasoning but I do my best for the betterment of my mental health!</p>
+          Meditation is the best way to relax your mind. I personally practice it when I wake up. It involves detaching yourself from reflexive logical thinking. As a Green personality, that is tough as I love logical reasoning but I do my best for the betterment of my mental health!</p>
           <div className="flex space-x-10 mt-4">
             <Image 
               src="/images/calmapp.png"
@@ -31,12 +31,12 @@ export const Coping = () => {
               height={30}
               alt="interest quiz"
             />
-            <div>
+            
               My favourite content creators on Calm are:
               <ul className="list-disc font-bold mt-3">
-                  <li>Jay Shetty (Chief Purpose Officer)</li>
-                  <li>Matthew McConaughey</li>
-                  <li>Dr. Eric Lopez, Ph.D</li>
+                  Jay Shetty (Chief Purpose Officer)</li>
+                  Matthew McConaughey</li>
+                  Dr. Eric Lopez, Ph.D</li>
               </ul>
             </div>
           </div>
@@ -44,7 +44,7 @@ export const Coping = () => {
           <p className="mt-2">↓</p>
         </Section>
 
-        <Section>
+        
         <div className="w-full text-center z-10 mb-6">
   {/* Thought Bubbles */}
   <div className="space-y-4">
@@ -105,7 +105,7 @@ export const Coping = () => {
               height={200}
               alt="Placeholder image"
             />
-            <p>
+            
               I took this picture when me and my friends went to watch a movie and get food.
               Pictured is us eating at Pizza Pizza near SliverCity Cineplex. My friends are
               important to me and provide emotional support whenever I am feeling down. In this
@@ -117,7 +117,7 @@ export const Coping = () => {
 
           <div className="mt-8 p-6 bg-pink-100 rounded-lg shadow-lg flex items-center space-x-4">
             <Lightbulb size={50} />    
-            <div>
+            
                 <h2 className="text-lg font-semibold">Emotional Support</h2>
                 <p className="text-gray-700">
                 Spending time with friends is a powerful coping mechanism. It reminds us that we’re not alone,

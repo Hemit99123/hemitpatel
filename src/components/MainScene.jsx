@@ -21,7 +21,7 @@ const SceneSwitcher = () => {
 
   return (
     <Suspense fallback={null}>
-      <Physics>
+      
         {
           type === "world" ? <Experience /> :
           type === "persoanlity" ? <><Experience2 overlay={Personality} /><Html position={[7,5,0]}><button onClick={goToWorld} className="bg-black text-white rounded-full h-10 w-48">Go back</button></Html></>:
@@ -69,7 +69,7 @@ const App = () => {
           // Force a stable canvas by using the same DOM container
           gl={{ 
             // Force a single WebGL context
-            preserveDrawingBuffer: true,
+            preserveDrawingBuffer,
             // These options might help with stability
             powerPreference: "high-performance",
             antialias: true
