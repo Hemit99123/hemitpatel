@@ -1,10 +1,4 @@
-interface SectionProps {
-  right?;
-  opacity?;
-  children: React.ReactNode;
-}
-
-export const Section: React.FC = (props) => {
+export const Section = (props) => {
   return (
     <section
       className={`h-screen flex flex-col p-10 ${

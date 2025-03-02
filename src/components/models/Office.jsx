@@ -35,7 +35,7 @@ export function Office(props) {
     tl.current.to(
       ref.current.position,
       {
-        duration,
+        duration: 2,
         y: -FLOOR_HEIGHT * (NB_FLOORS - 1),
       },
       0
@@ -44,12 +44,12 @@ export function Office(props) {
     // Office Rotation - keep the same
     tl.current.to(
       ref.current.rotation,
-      { duration, x, y: Math.PI / 6, z: 0 },
+      { duration: 1, x: 0, y: Math.PI / 6, z: 0 },
       0
     );
     tl.current.to(
       ref.current.rotation,
-      { duration, x, y: -Math.PI / 6, z: 0 },
+      { duration: 1, x: 0, y: -Math.PI / 6, z: 0 },
       1
     );
 
@@ -57,18 +57,18 @@ export function Office(props) {
     tl.current.to(
       ref.current.position,
       {
-        duration,
+        duration: 1,
         x: -1.5, // Scaled from -1
-        z,    // Scaled from 2
+        z: 3,    // Scaled from 2
       },
       0
     );
     tl.current.to(
       ref.current.position,
       {
-        duration,
+        duration: 1,
         x: 1.5,  // Scaled from 1
-        z,    // Scaled from 2
+        z: 3,    // Scaled from 2
       },
       1
     );
@@ -96,7 +96,7 @@ export function Office(props) {
       atticRef.current.position,
       {
         duration: 1.5,
-        y,  // Scaled from 2
+        y: 3,  // Scaled from 2
       },
       0
     );

@@ -2,9 +2,9 @@
 
 import { Html, Text3D } from "@react-three/drei";
 import { useThree } from "@react-three/fiber";
-import { Iceberg } from "../models/Iceberg";
+import { Iceberg } from "./models/Iceberg";
 import { useEffect, useState, useRef } from "react";
-import { Water } from "../models/Water";
+import { Water } from "./models/Water";
 import Image from "next/image";
 
 // Define topics with images and descriptions
@@ -49,7 +49,7 @@ const topics = {
 
 function Modal({ onClose, children, image, occupationWorks }) {
   const [isDragging, setIsDragging] = useState(false);
-  const [position, setPosition] = useState({ x, y: 0 });
+  const [position, setPosition] = useState({ x: 0, y: 0 });
   const modalRef = useRef(null);
 
   const handleMouseDown = (e) => {

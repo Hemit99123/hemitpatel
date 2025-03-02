@@ -1,9 +1,8 @@
 import { useFrame } from "@react-three/fiber";
 import { useRef } from "react";
-import * as THREE from "three";
 
 const Sun = () => {
-  const sunRef = useRef<THREE.Mesh>(null!);
+  const sunRef = useRef(null);
 
   // Animate rotation to give a subtle burning effect
   useFrame(() => {

@@ -8,7 +8,7 @@ import { useViewTypeStore } from "../store/view";
 import { Experience3 } from "./Skills";
 import { Personality } from "./scroll_view/Personality";
 import { Coping } from "./scroll_view/Coping";
-import MyIdentity from "./scroll_view/MyIdentity";
+import MyIdentity from "./MyIdentity";
 import { Html } from "@react-three/drei";
 
 // This component handles the content switching without remounting Canvas
@@ -69,7 +69,7 @@ const App = () => {
           // Force a stable canvas by using the same DOM container
           gl={{ 
             // Force a single WebGL context
-            preserveDrawingBuffer,
+            preserveDrawingBuffer: true,
             // These options might help with stability
             powerPreference: "high-performance",
             antialias: true

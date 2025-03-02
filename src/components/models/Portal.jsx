@@ -1,38 +1,29 @@
-import { useViewTypeStore, ViewType } from "@/store/view";
+import { useViewTypeStore } from "../../store/view";
 import { Center, Cylinder, Sphere, Text3D } from "@react-three/drei";
 import { CylinderCollider, RigidBody } from "@react-three/rapier";
 import { useControls } from "leva";
-import { FC } from "react";
 
-interface PortalProps {
-  position: [number, number, number];
-  text;
-  text_x;
-  text_y: 0.8 | 1;
-  view;
-}
-
-export const Portal: FC = ({ position, text, text_x, text_y, view }) => {
+export const Portal = ({ position, text, text_x, text_y, view }) => {
 
   const {setType} = useViewTypeStore.getState()
 
   const config = useControls({
-    meshPhysicalMaterial,
-    transmissionSampler,
-    backside,
-    samples: { value, min, max, step: 1 },
-    resolution: { value, min, max, step: 256 },
-    transmission: { value, min, max: 1 },
-    roughness: { value: 0.0, min, max, step: 0.01 },
-    thickness: { value, min, max, step: 0.01 },
-    ior: { value: 1.17, min, max, step: 0.01 },
-    chromaticAberration: { value, min, max: 1 },
-    anisotropy: { value, min, max, step: 0.01 },
-    distortion: { value: 0.0, min, max, step: 0.01 },
-    distortionScale: { value, min: 0.01, max, step: 0.01 },
-    temporalDistortion: { value, min, max, step: 0.01 },
-    clearcoat: { value, min, max: 1 },
-    attenuationDistance: { value, min, max, step: 0.01 },
+    meshPhysicalMaterial: false,
+    transmissionSampler: false,
+    backside: false,
+    samples: { value: 10, min: 1, max: 32, step: 1 },
+    resolution: { value: 1024, min: 256, max: 2048, step: 256 },
+    transmission: { value: 1, min: 0, max: 1 },
+    roughness: { value: 0.0, min: 0, max: 1, step: 0.01 },
+    thickness: { value: 0, min: 0, max: 10, step: 0.01 },
+    ior: { value: 1.17, min: 1, max: 5, step: 0.01 },
+    chromaticAberration: { value: 1, min: 0, max: 1 },
+    anisotropy: { value: 0, min: 0, max: 1, step: 0.01 },
+    distortion: { value: 0.0, min: 0, max: 1, step: 0.01 },
+    distortionScale: { value: 0, min: 0.01, max: 1, step: 0.01 },
+    temporalDistortion: { value: 0, min: 0, max: 1, step: 0.01 },
+    clearcoat: { value: 1, min: 0, max: 1 },
+    attenuationDistance: { value: 1, min: 0, max: 10, step: 0.01 },
     attenuationColor: "#ffffff",
     color: "#fffff",
     bg: "#ffffff",
