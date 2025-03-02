@@ -28,7 +28,7 @@ const SceneSwitcher = () => {
   const { type, setType } = useViewTypeStore();
   const [tipIndex, setTipIndex] = useState(0);
   const [tip, setTip] = useState(null);
-  const tips = ["Use WASD to move around", "Collide with the glass portals to navigate"];
+  const tips = ["Use WASD to move around", "Collide with the glass portals to navigate", "Click on the modals to learn more about them."];
 
   useEffect(() => {
     if (tipIndex < tips.length) {
