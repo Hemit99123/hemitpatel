@@ -14,7 +14,7 @@ const topics = {
     image: "/images/hemit.png", // Example local image path
   },
   Appearance: {
-    text: "I am 6 feet. I wear glasses and have black thick hair. My hairstyle varies as I experiment a lot with it! I have some facial hair (goatee). I prefer to wear non-branded hoodies but I enjoy wearing formal attires like suits. They have a certain level of elegance which I enjoy and I feel pride when I am in one, like above.",
+    text: "I am 6 feet. I wear glasses, braces (light cyan), and have black thick hair. My hairstyle varies as I experiment a lot with it! I have some facial hair (goatee). I prefer to wear non-branded hoodies but I enjoy wearing formal attires like suits. They have a certain level of elegance which I enjoy and I feel pride when I am in one, like above.",
     image: "/images/me!.png", // Example local image path
   },
   Occupation: {

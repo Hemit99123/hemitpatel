@@ -9,27 +9,11 @@ const loadTexture = (url) => {
   return textureLoader.load(url);
 };
 
-const GridItem = ({ position, size, item, setSelected, hoveredItem, setHoveredItem }) => {
+const GridItem = ({ position, item, setSelected }) => {
   const meshRef = useRef();
-  const isHovered = hoveredItem?.id === item.id;
-  const isSelected = setSelected?.id === item.id;
-
-  const targetPosition = [...position];
-  if (isHovered || isSelected) {
-    targetPosition[2] = 0.5;
-  }
-
   useFrame(() => {
     if (meshRef.current) {
-      meshRef.current.position.x += (targetPosition[0] - meshRef.current.position.x) * 0.1;
-      meshRef.current.position.y += (targetPosition[1] - meshRef.current.position.y) * 0.1;
-      meshRef.current.position.z += (targetPosition[2] - meshRef.current.position.z) * 0.1;
-
-      if (isHovered) {
-        meshRef.current.rotation.y += 0.01;
-      } else {
-        meshRef.current.rotation.y *= 0.95;
-      }
+      meshRef.current.position.lerp(new THREE.Vector3(...position), 0.1);
     }
   });
 
@@ -37,9 +21,7 @@ const GridItem = ({ position, size, item, setSelected, hoveredItem, setHoveredIt
     <Box
       ref={meshRef}
       position={position}
-      args={[3,3, 0.2]}
-      onPointerOver={() => setHoveredItem(item)}
-      onPointerOut={() => setHoveredItem(null)}
+      args={[3, 3, 0.2]}
       onClick={() => setSelected(item)}
     >
       <meshStandardMaterial
@@ -54,19 +36,18 @@ const GridItem = ({ position, size, item, setSelected, hoveredItem, setHoveredIt
 
 export const Experience3 = () => {
   const [selected, setSelected] = useState(null);
-  const [hoveredItem, setHoveredItem] = useState(null);
 
   const handleReset = () => {
-    setSelected("")
-  }
+    setSelected(null);
+  };
 
   const gridItems = [
-    { id: 1, position: [-4, 4, 0], imageUrl: "https://plus.unsplash.com/premium_photo-1672837630994-5c0a5f890fd8?q=80&w=2355&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", skill: "Communication", description: "d" },
-    { id: 2, position: [0, 4, 0], imageUrl: "https://images.unsplash.com/photo-1539627831859-a911cf04d3cd?q=80&w=2942&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", skill: "Problem solving", description: "d" },
-    { id: 3, position: [4, 4, 0], imageUrl: "https://images.unsplash.com/photo-1517971071642-34a2d3ecc9cd?q=80&w=2403&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", skill: "Writing", description: "d" },
-    { id: 4, position: [-4, 0, 0], imageUrl: "https://images.unsplash.com/photo-1600880292089-90a7e086ee0c?q=80&w=3087&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", skill: "Leadership", description: "d" },
-    { id: 5, position: [0, 0, 0], imageUrl: "https://images.unsplash.com/photo-1620424393934-04e772be09f4?q=80&w=3087&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", skill: "Critical thinking", description: "d" },
-    { id: 6, position: [4, 0, 0], imageUrl: "https://images.unsplash.com/photo-1509048191080-d2984bad6ae5?q=80&w=3163&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", skill: "Time Management", description: "d" },
+    { id: 1, position: [-4, 4, 0], imageUrl: "https://plus.unsplash.com/premium_photo-1672837630994-5c0a5f890fd8?q=80&w=2355&auto=format&fit=crop", skill: "Communication", description: "d" },
+    { id: 2, position: [0, 4, 0], imageUrl: "https://images.unsplash.com/photo-1539627831859-a911cf04d3cd?q=80&w=2942&auto=format&fit=crop", skill: "Problem solving", description: "d" },
+    { id: 3, position: [4, 4, 0], imageUrl: "https://images.unsplash.com/photo-1517971071642-34a2d3ecc9cd?q=80&w=2403&auto=format&fit=crop", skill: "Writing", description: "d" },
+    { id: 4, position: [-4, 0, 0], imageUrl: "https://images.unsplash.com/photo-1600880292089-90a7e086ee0c?q=80&w=3087&auto=format&fit=crop", skill: "Leadership", description: "d" },
+    { id: 5, position: [0, 0, 0], imageUrl: "https://images.unsplash.com/photo-1620424393934-04e772be09f4?q=80&w=3087&auto=format&fit=crop", skill: "Critical thinking", description: "d" },
+    { id: 6, position: [4, 0, 0], imageUrl: "https://images.unsplash.com/photo-1509048191080-d2984bad6ae5?q=80&w=3163&auto=format&fit=crop", skill: "Time Management", description: "d" },
   ];
 
   return (
@@ -78,34 +59,22 @@ export const Experience3 = () => {
         <meshStandardMaterial color="#333333" metalness={0.8} roughness={0.2} />
       </Text3D>
       {selected ? (
-  <Html position={[0, 0, 0]}>
-   <div className="w-screen">
-   <h1 className="text-2xl font-bold">{selected.skill}</h1>
-   <div className="max-w-xl">
-    <p className="">{selected.description}</p>
-   </div>
-   <button onClick={handleReset} className="bg-black rounded-lg text-white py-2 px-5">Cancel</button>
-    </div> 
-
-        
-  </Html>
-) : (
-  <group position={[2, -3.5, 0]}>
-    {gridItems.map((item) => (
-      <GridItem
-        key={item.id}
-        item={item}
-        position={item.position}
-        size={item.size}
-        setSelected={setSelected}
-        hoveredItem={hoveredItem}
-        setHoveredItem={setHoveredItem}
-      />
-    ))}
-  </group>
-)}
-
-
+        <Html position={[0, 0, 0]}>
+          <div className="w-screen">
+            <h1 className="text-2xl font-bold">{selected.skill}</h1>
+            <div className="max-w-xl">
+              <p>{selected.description}</p>
+            </div>
+            <button onClick={handleReset} className="bg-black rounded-lg text-white py-2 px-5">Cancel</button>
+          </div>
+        </Html>
+      ) : (
+        <group position={[2, -3.5, 0]}>
+          {gridItems.map((item) => (
+            <GridItem key={item.id} item={item} position={item.position} setSelected={setSelected} />
+          ))}
+        </group>
+      )}
     </>
   );
 };
