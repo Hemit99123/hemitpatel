@@ -25,7 +25,9 @@ const GridItem = ({ position, item, setSelected }) => {
       args={[3, 3, 0.2]}
       onClick={() => setSelected(item)}
     >
-      <Text3D>
+      <Text3D
+        font="./fonts/Poppins-Black.json"
+      >
         {item.skill}
       </Text3D>
     </Box>
