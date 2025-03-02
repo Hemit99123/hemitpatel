@@ -5,19 +5,49 @@ import { useThree } from "@react-three/fiber";
 import { Iceberg } from "../models/Iceberg";
 import { useEffect, useState, useRef } from "react";
 import { Water } from "../models/Water";
+import Image from "next/image";
 
+// Define topics with images and descriptions
 const topics = {
-  Name: "Your name is a key part of your identity. It can reflect your heritage, culture, and personal history.",
-  Appearance: "Your physical appearance is often the first impression people have of you. It includes features, clothing, and style.",
-  Occupation: "Your job or career can be a defining part of your identity, shaping your daily life and sense of purpose.",
-  Hobbies: "Hobbies reflect your interests and passions, providing enjoyment and a sense of fulfillment.",
-  Values: "Your core values guide your decisions and behaviors, shaping your moral compass and interactions.",
-  Beliefs: "Beliefs influence your worldview, religious perspectives, and the principles you uphold in life.",
-  Experiences: "Life experiences shape who you are, providing lessons and personal growth through challenges and successes.",
-  "Inner Self": "The inner self represents your true thoughts, emotions, and sense of identity beyond external influences."
+  Name: {
+    text: "My name is Hemit Patel. In accordance to tradition, my aunt named me. My name comes from Hindu/Sanskrit tradition and means great friend.",
+    image: "/images/hemit.png", // Example local image path
+  },
+  Appearance: {
+    text: "I am 6 feet. I wear glasses and have black thick hair. My hairstyle varies as I experiment a lot with it! I have some facial hair (goatee). I prefer to wear non-branded hoodies but I enjoy wearing formal attires like suits. They have a certain level of elegance which I enjoy and I feel pride when I am in one, like above.",
+    image: "/images/me!.png", // Example local image path
+  },
+  Occupation: {
+    text: "My occupation is a student who is studying to become a Software Engineer/AI Researcher. I hope to run a technology consultation firm while completing a Ph.D in the AI domain. Eventually, I wish to combine both my AI research and my firm together. Below check out some of my works.",
+    image: "/images/mecoding2.png", // Example local image path
+    works: [
+      { name: "DailySAT", url: "https://dailysat.org/about" },
+      { name: "StockSavvy", url: "https://stocksavvy-frontend.vercel.app" },
+    ],
+  },
+  Hobby: {
+    text: "The gym is really the only hobby I have. I am currently doing the PPL split, where I train my chest/triceps, back/biceps and lower body. I go to Gore Meadows Fitness but formerly attended Weightroom club.",
+    image: "/images/gym2.png", // Example local image path
+  },
+  Values: {
+    text: "The most important value I hold is family. W/o my family, I am nothing. They are the ones who provide for me, not only financially but also emotionally. They are there, regardless of what I did because they truly love me for me. My brother (pictured above) is particualry important because he provides me with non-judgemental company.",
+    image: "/images/family.png", // Example local image path
+  },
+  Beliefs: {
+    text: "The most important belief I hold is Hinduism/Sanatan Dharma. Pictured above is when I went to visit Akshardham in New Jersey. My religon brings me peace. I also learn a lot of ancient Hindu literature about life and EVEN SCIENCE!",
+    image: "/images/mandir.png", // Example local image path
+  },
+  Experiences: {
+    text: "Life experiences shape who you are, providing lessons through challenges. Personally, I was a coach for my brother's basketball team. It taught me discipline because there were many times, I did not want to go but I did anyways. Patience as well, because it took time for them to properly understand drills.",
+    image: "/images/mecoaching.png", // Example local image path
+  },
+  "Hobby 2": {
+    text: "Another hobby I truly enjoy is travelling. I have gone to 5 countries so far (🇺🇸, 🇲🇽, 🇩🇴, 🇮🇳, 🇧🇸) I find it fulfilling exploring the world and understanding how others live/cultures. In the image above, we went to Paradise Island, Nassau, Bahamas",
+    image: "/images/bahamas.png", // Example local image path
+  },
 };
 
-function Modal({ onClose, children }) {
+function Modal({ onClose, children, image, occupationWorks }) {
   const [isDragging, setIsDragging] = useState(false);
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const modalRef = useRef(null);
@@ -64,11 +94,27 @@ function Modal({ onClose, children }) {
     >
       <div
         ref={modalRef}
-        className="bg-white p-6 rounded-lg max-w-lg w-full text-center"
+        className="bg-white p-6 rounded-lg max-w-lg w-full text-center shadow-lg flex justify-center items-center flex-col"
       >
-        {children}
+        {image && <Image src={image} alt={children} width={400} height={100} className="mb-4 rounded-lg" />}
+        <div className="w-full">
+          {children}
+        </div>
+        {occupationWorks && occupationWorks.length > 0 && (
+          <div className="">
+            {occupationWorks.map((work, index) => (
+              <button
+                key={index}
+                onClick={() => window.open(work.url, "_blank")}
+                className="mt-2 px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600 transition ml-2"
+              >
+                {work.name}
+              </button>
+            ))}
+          </div>
+        )}
         <button
-          className="mt-4 px-4 py-2 bg-blue-500 text-white rounded"
+          className="mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition"
           onClick={onClose}
         >
           Close
@@ -83,13 +129,12 @@ export default function IdentityIceberg() {
   const [selectedTopic, setSelectedTopic] = useState(null);
 
   const handlePointerOver = () => {
-    gl.domElement.style.cursor = 'pointer';
+    gl.domElement.style.cursor = "pointer";
   };
 
   const handlePointerOut = () => {
-    gl.domElement.style.cursor = 'auto';
+    gl.domElement.style.cursor = "auto";
   };
-
 
   useEffect(() => {
     scene.background = null;
@@ -126,10 +171,9 @@ export default function IdentityIceberg() {
               key={topic}
               font="./fonts/Poppins-Black.json"
               position={positions[index]}
-              rotation-y={index % 2 === 0 ? 1.8 * Math.PI : 0}
               onClick={() => handleOpenModal(topic)}
               onPointerOver={handlePointerOver}
-              onPointerOut={handlePointerOut}         
+              onPointerOut={handlePointerOut}
             >
               {topic}
               <meshStandardMaterial color={colors[index]} toneMapped={false} />
@@ -140,10 +184,16 @@ export default function IdentityIceberg() {
 
       {/* Modal for displaying information */}
       {selectedTopic && (
-        <Html position={[-9,2,0]}>
-          <Modal onClose={handleCloseModal}>
+        <Html position={[-9, 2, 0]}>
+          <Modal
+            onClose={handleCloseModal}
+            image={topics[selectedTopic]?.image}
+            occupationWorks={selectedTopic === "Occupation" ? topics[selectedTopic].works : null}
+          >
             <h2 className="text-3xl font-bold">{selectedTopic}</h2>
-            <p className="mt-4">{topics[selectedTopic]}</p>
+            <div className="bg-blue-100 rounded-lg p-4 mt-4">
+              <p className="text-lg">{topics[selectedTopic].text}</p>
+            </div>
           </Modal>
         </Html>
       )}
