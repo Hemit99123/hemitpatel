@@ -25,12 +25,9 @@ const GridItem = ({ position, item, setSelected }) => {
       args={[3, 3, 0.2]}
       onClick={() => setSelected(item)}
     >
-      <meshStandardMaterial
-        map={loadTexture(item.imageUrl)}
-        color={"#ffffff"}
-        metalness={0.5}
-        roughness={0.2}
-      />
+      <Text3D>
+        {item.skill}
+      </Text3D>
     </Box>
   );
 };
