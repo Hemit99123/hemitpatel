@@ -3,7 +3,7 @@ import { useFrame } from "@react-three/fiber";
 import { useState } from "react";
 import { Section } from "./shared/Section";
 import Image from "next/image";
-import { Lightbulb } from "lucide-react";
+import { Lightbulb, Smile, Wind, Scale } from "lucide-react";
 import Link from "next/link";
 
 export const Coping = () => {
@@ -21,27 +21,57 @@ export const Coping = () => {
   return (
     <Scroll html>
       <div className="w-screen">
-        <Section opacity={opacityFirstSection}>
-          <h1 className="text-xl font-bold">Meditation</h1>
-          <p>Meditation is the best way to relax your mind. I personally practice it when I wake up. It involves detaching yourself from reflexive logical thinking. As a Green personality, that is tough as I love logical reasoning but I do my best for the betterment of my mental health!</p>
-          <div className="flex space-x-10 mt-4">
-            <Image 
-              src="/images/calmapp.png"
-              width={250}
-              height={30}
-              alt="interest quiz"
-            />
-            <div>
-              My favourite content creators on Calm are:
-              <ul className="list-disc font-bold mt-3">
-                <li>Jay Shetty (Chief Purpose Officer)</li>
-                <li>Matthew McConaughey</li>
-                <li>Dr. Eric Lopez, Ph.D</li>
-              </ul>
-            </div>
-          </div>
-          <p className="mt-2">↓</p>
-        </Section>
+      <Section opacity={opacityFirstSection} className="p-8 bg-white rounded-xl shadow-md">
+  <h1 className="text-4xl font-extrabold text-gradient bg-clip-text text-transparent bg-gradient-to-r from-green-500 to-blue-500">
+    Meditation
+  </h1>
+  <p className="mt-4 text-lg leading-relaxed text-gray-800">
+    Meditation is the best way to relax your mind. I personally practice it when I wake up. It involves detaching yourself from reflexive logical thinking. As a Green personality, that is tough as I love logical reasoning but I do my best for the betterment of my mental health!
+  </p>
+  
+  {/* Meditation Quote Box */}
+  <div className="mt-6 p-4 bg-green-100 rounded-lg shadow-sm">
+    <blockquote className="text-xl font-semibold text-gray-600 italic">
+      "Learn to be calm and you will always be happy."
+    </blockquote>
+    <p className="mt-2 text-right text-sm text-gray-500">— Paramahansa Yogananda</p>
+  </div>
+
+  {/* Icons for Meditation */}
+  <div className="flex space-x-10 mt-6">
+    <div className="flex items-center space-x-2">
+      <Smile className="text-green-500"/>
+      <span className="text-gray-700 font-semibold">Mindfulness</span>
+    </div>
+    <div className="flex items-center space-x-2">
+      <Wind className="text-blue-500"/>
+      <span className="text-gray-700 font-semibold">Breathe</span>
+    </div>
+    <div className="flex items-center space-x-2">
+      <Scale className="text-pink-500" />
+      <span className="text-gray-700 font-semibold">Balance</span>
+    </div>
+  </div>
+
+  {/* Call-to-Action Button */}
+  <div className="mt-8 bg-gray-100 p-6 rounded-lg shadow-md ">
+        <h2 className="text-2xl font-semibold text-gray-800">Try it out!</h2>
+        <p className="mt-2 text-lg text-gray-600">Click play to start your guided meditation session.</p>
+
+        {/* Audio Player */}
+        <div className="mt-4 flex flex-col items-center">
+          <audio controls className="w-full md:w-3/4">
+            <source src="/audio/mindful.mp3" type="audio/mp3" />
+            Your browser does not support the audio element.
+          </audio>
+        </div>
+  </div>
+
+  {/* Arrow */}
+  <p className="mt-6 text-3xl text-center text-gray-600">↓</p>
+</Section>
+
+
 
         <Section>
           {/* Thought Bubbles */}
