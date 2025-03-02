@@ -1,8 +1,6 @@
 "use client"
 
-import Loading from "../components/Loading";
 import MainScene from "../components/MainScene";
-import { Leva } from "leva";
 import { useEffect, useState } from "react";
 
 export default function Home() {
@@ -16,15 +14,7 @@ export default function Home() {
   
   return (
     <>
-      {isLoading ?
-        (<Loading />)
-      : (
-          <>
-            <Leva  hidden />
-            <MainScene />
-          </>
-      )
-      }
+      <MainScene />
     </>
   );
 }

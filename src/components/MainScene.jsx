@@ -9,7 +9,8 @@ import { Experience3 } from "./Skills";
 import { Personality } from "./scroll_view/Personality";
 import { Coping } from "./scroll_view/Coping";
 import MyIdentity from "./MyIdentity";
-import { Html } from "@react-three/drei";
+import { Html, Loader } from "@react-three/drei";
+import { Leva } from "leva";
 
 // This component handles the content switching without remounting Canvas
 const SceneSwitcher = () => {
@@ -75,7 +76,11 @@ const App = () => {
             antialias: true
           }}
         >
+          <Leva hidden />
           <SceneSwitcher />
+          <Html>
+            <Loader data-testid="loader" />
+          </Html>
         </Canvas>
       )}
     </div>
