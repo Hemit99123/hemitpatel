@@ -206,7 +206,7 @@ export const Experience = () => {
       <RigidBody colliders={false} type="fixed" position-y={-0.7} friction={2.4}>
         <Stage scale={[1.35, 1.2, 1.2]} position={[0.5, 0, 0]} />
         <Portal position={[3.5, 1.2, -3.5]} text="Me" text_x={0.1} text_y={0.8} view={"me"} />
-        <Portal position={[-2.5, 1.2, -3.5]} text="Vibe" text_x={-0.05} text_y={0.8} view={"persoanlity"} />
+        <Portal position={[-2.5, 1.2, -3.5]} text="Vibe" text_x={-0.05} text_y={0.8} view={"personality"} />
         <Portal position={[3.5, 1.2, 3.5]} text="Skills" text_x={-0.01} text_y={1} view={"skills"} />
         <Portal position={[-3, 1.2, 3.5]} text="Coping" text_x={0} text_y={1} view={"coping"} />
 
