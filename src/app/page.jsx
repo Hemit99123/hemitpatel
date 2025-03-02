@@ -1,7 +1,7 @@
 "use client"
 
-import Loading from "@/components/Loading";
-import MainScene from "@/components/MainScene";
+import Loading from "../components/Loading";
+import MainScene from "../components/MainScene";
 import { Leva } from "leva";
 import { useEffect, useState } from "react";
 
