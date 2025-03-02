@@ -1,5 +1,3 @@
-// @ts-nocheck
-
 import { useFrame } from "@react-three/fiber";
 import { CapsuleCollider, RigidBody } from "@react-three/rapier";
 import { useRef, useState, useEffect } from "react";
@@ -16,20 +14,21 @@ export const CharacterController = () => {
   const rigidBodyRef = useRef(null);
   const characterRef = useRef(null);
   const [isOnFloor, setIsOnFloor] = useState(true);
-
-  const [keys, setKeys] = useState({ forward, back, left, right, jump: false });
+  const [keys, setKeys] = useState({ forward: false, back: false, left: false, right: false, jump: false });
 
   useEffect(() => {
-    const handleKeyDown = (e: { code; }) => {
-      setKeys((prev) => ({ ...prev, [getKey(e.code)]: true }));
+    const handleKeyDown = (e) => {
+      const key = getKey(e.code);
+      if (key) setKeys((prev) => ({ ...prev, [key]: true }));
     };
-    const handleKeyUp = (e: { code; }) => {
-      setKeys((prev) => ({ ...prev, [getKey(e.code)]: false }));
+    const handleKeyUp = (e) => {
+      const key = getKey(e.code);
+      if (key) setKeys((prev) => ({ ...prev, [key]: false }));
     };
 
     window.addEventListener("keydown", handleKeyDown);
     window.addEventListener("keyup", handleKeyUp);
-    
+
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
       window.removeEventListener("keyup", handleKeyUp);
@@ -40,14 +39,14 @@ export const CharacterController = () => {
     if (!rigidBodyRef.current) return;
 
     const rigidbody = rigidBodyRef.current;
-    const impulse = { x, y, z: 0 };
+    const impulse = { x: 0, y: 0, z: 0 };
 
     if (keys.jump && isOnFloor) {
       impulse.y += JUMP_FORCE;
       setIsOnFloor(false);
     }
 
-    let currentVel = { x, z: 0 };
+    let currentVel = { x: 0, z: 0 };
     const linvel = rigidbody.linvel();
     if (linvel) {
       currentVel.x = linvel.x;
@@ -95,22 +94,20 @@ export const CharacterController = () => {
   });
 
   return (
-    
-      <RigidBody
-        ref={rigidBodyRef}
-        colliders={false}
-        scale={[0.5, 0.5, 0.5]}
-        enabledRotations={[false, false, false]}
-        onCollisionEnter={() => setIsOnFloor(true)}
-        type="dynamic"
-        position={[0, 2, 0]}
-      >
-        <CapsuleCollider args={[0.8, 0.4]} position={[0, 1.2, 0]} />
-        <group ref={characterRef}>
-          <Character scale={[1.5, 1.5, 1.5]} position={[0, 2, 0]} />
-        </group>
-      </RigidBody>
-    </group>
+    <RigidBody
+      ref={rigidBodyRef}
+      colliders={false}
+      scale={[0.5, 0.5, 0.5]}
+      enabledRotations={[false, false, false]}
+      onCollisionEnter={() => setIsOnFloor(true)}
+      type="dynamic"
+      position={[0, 2, 0]}
+    >
+      <CapsuleCollider args={[0.8, 0.4]} position={[0, 1.2, 0]} />
+      <group ref={characterRef}>
+        <Character scale={[1.5, 1.5, 1.5]} position={[0, 2, 0]} />
+      </group>
+    </RigidBody>
   );
 };
 
