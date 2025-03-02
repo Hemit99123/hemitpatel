@@ -20,7 +20,6 @@ const AlertTip = ({ message, onClose }) => {
         <button onClick={onClose} className="ml-4 text-red-500">✖</button>
       </div>
     </Html>
-
   );
 };
 
@@ -28,24 +27,30 @@ const SceneSwitcher = () => {
   const { type, setType } = useViewTypeStore();
   const [tipIndex, setTipIndex] = useState(0);
   const [tip, setTip] = useState(null);
-  const [dismissedTips, setDismissedTips] = useState(new Set());
+  const dismissedTips = useRef(new Set()); // Use ref instead of state for dismissed tips
   const tips = ["Use WASD to move around", "Collide with the glass portals to navigate", "Click on the modals to learn more about them."];
 
   useEffect(() => {
-    if (tipIndex < tips.length && !dismissedTips.has(tips[tipIndex])) {
+    if (tipIndex < tips.length) {
+      if (dismissedTips.current.has(tips[tipIndex])) {
+        // Skip dismissed tips safely without triggering an infinite loop
+        setTimeout(() => setTipIndex((prev) => prev + 1), 0);
+        return;
+      }
+  
       setTip(tips[tipIndex]);
       const timer = setTimeout(() => {
         setTip(null);
         setTipIndex((prev) => prev + 1);
       }, 4000);
+      
       return () => clearTimeout(timer);
-    } else {
-      setTipIndex((prev) => prev + 1); // Skip dismissed tips
     }
-  }, [tipIndex, dismissedTips]);
+  }, [tipIndex]); // Remove `tips` dependency to prevent unnecessary re-renders
+  
 
   const dismissTip = () => {
-    setDismissedTips((prev) => new Set(prev).add(tips[tipIndex])); // Add tip to dismissed set
+    dismissedTips.current.add(tips[tipIndex]); // Add to ref instead of state
     setTip(null);
   };
 
@@ -66,16 +71,15 @@ const SceneSwitcher = () => {
   );
 };
 
-
 const App = () => {
   const containerRef = useRef(null);
   const [mounted, setMounted] = useState(false);
-  
+
   useEffect(() => {
     setMounted(true);
     return () => setMounted(false);
   }, []);
-  
+
   return (
     <div ref={containerRef} style={{ display: "flex", justifyContent: "center", alignItems: "center", height: "100vh", width: "100vw" }}>
       {mounted && (
