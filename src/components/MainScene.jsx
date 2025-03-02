@@ -28,18 +28,27 @@ const SceneSwitcher = () => {
   const { type, setType } = useViewTypeStore();
   const [tipIndex, setTipIndex] = useState(0);
   const [tip, setTip] = useState(null);
+  const [dismissedTips, setDismissedTips] = useState(new Set());
   const tips = ["Use WASD to move around", "Collide with the glass portals to navigate", "Click on the modals to learn more about them."];
 
   useEffect(() => {
-    if (tipIndex < tips.length) {
+    if (tipIndex < tips.length && !dismissedTips.has(tips[tipIndex])) {
       setTip(tips[tipIndex]);
-      setTimeout(() => {
+      const timer = setTimeout(() => {
         setTip(null);
         setTipIndex((prev) => prev + 1);
       }, 4000);
+      return () => clearTimeout(timer);
+    } else {
+      setTipIndex((prev) => prev + 1); // Skip dismissed tips
     }
-  }, [tipIndex]);
-  
+  }, [tipIndex, dismissedTips]);
+
+  const dismissTip = () => {
+    setDismissedTips((prev) => new Set(prev).add(tips[tipIndex])); // Add tip to dismissed set
+    setTip(null);
+  };
+
   const goToWorld = () => setType("world");
 
   return (
@@ -52,10 +61,11 @@ const SceneSwitcher = () => {
          type === "skills" ? <><Experience3 /><Html position={[7,5,0]}><button onClick={goToWorld} className="bg-black text-white rounded-full h-10 w-48">Go back</button></Html></> :
          null}
       </Physics>
-      {tip && <AlertTip message={tip} onClose={() => setTip(null)} />}
+      {tip && <AlertTip message={tip} onClose={dismissTip} />}
     </Suspense>
   );
 };
+
 
 const App = () => {
   const containerRef = useRef(null);
